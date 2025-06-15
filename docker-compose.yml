@@ -1,0 +1,35 @@
+services:
+
+  hono-app:
+    build: .
+    container_name: hono_app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    command: node dist/index.js
+    networks:
+      - backend-network
+
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: hono_postgres
+    environment:
+      - POSTGRES_USER=${PG_USER:-postgres}
+      - POSTGRES_PASSWORD=${PG_PASSWORD:-postgres}
+      - POSTGRES_DB=${PG_DATABASE:-hono_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+
+volumes:
+  postgres_data:
+
+networks:
+  backend-network:
