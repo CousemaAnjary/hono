@@ -1,37 +1,44 @@
 # ----------------------------------------------------------------------
-# Construction de l'image Docker pour l'application
+# Étape 1 : Construction de l'application (build)
 # ----------------------------------------------------------------------
 
-# Étape 1: Utilisation de l'image de base Node.js
 FROM node:22-alpine AS builder
 
-# Étape 2: Définition du répertoire de travail
+# Répertoire de travail
 WORKDIR /app
 
-# Étape 3: Copier les fichiers de dépendances
+# Copie des fichiers de dépendances
 COPY package.json package-lock.json ./
 
-# Étape 4: Installation des dépendances (dev + prod)
-RUN npm install
+# Installation des dépendances (inclut les devDeps pour build)
+RUN npm ci
 
-# Étape 5: Copier le reste des fichiers de l'application
+# Copie du reste des fichiers
 COPY . .
 
-# Étape 6: Construction de l'application
+# Compilation TypeScript
 RUN npm run build
 
-# Étape 7: Création de l'image finale
+
+# ----------------------------------------------------------------------
+# Étape 2 : Image finale pour exécution (plus légère)
+# ----------------------------------------------------------------------
+
 FROM node:22-alpine
 
-# Étape 8: Définition du répertoire de travail
+# Répertoire de travail
 WORKDIR /app
 
-# Étape 9: Copier les fichiers buildés depuis builder
+# Copie du code compilé et des fichiers nécessaires
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package-lock.json ./
 
-# Exposer le port
+# Installer uniquement les dépendances de production
+RUN npm ci --omit=dev
+
+# Exposer le port (adapter si ce n'est pas 3000)
 EXPOSE 3000
 
-# Démarrer l'application
-CMD [ "node", "dist/index.js" ]
+# Lancement de l'application
+CMD ["node", "dist/index.js"]
