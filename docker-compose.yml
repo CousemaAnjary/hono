@@ -1,5 +1,5 @@
 services:
-
+#
   hono-app:
     build: .
     container_name: hono_app
@@ -13,14 +13,15 @@ services:
     networks:
       - backend-network
 
-
+#
   postgres:
     image: postgres:15-alpine
     container_name: hono_postgres
     environment:
-      - POSTGRES_USER=${PG_USER:-postgres}
-      - POSTGRES_PASSWORD=${PG_PASSWORD:-postgres}
-      - POSTGRES_DB=${PG_DATABASE:-hono_db}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DATABASE}
+
     ports:
       - "5432:5432"
     volumes:
@@ -28,6 +29,7 @@ services:
     networks:
       - backend-network
 
+# 
 volumes:
   postgres_data:
 
