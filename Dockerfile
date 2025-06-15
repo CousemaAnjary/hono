@@ -31,13 +31,13 @@ WORKDIR /app
 
 # Copie du code compilé et des fichiers nécessaires
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/package-lock.json ./
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/package-lock.json ./package-lock.json
 
 # Installer uniquement les dépendances de production
 RUN npm ci --omit=dev
 
-# Exposer le port (adapter si ce n'est pas 3000)
+# Exposer le port 
 EXPOSE 3000
 
 # Lancement de l'application
