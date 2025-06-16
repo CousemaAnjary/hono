@@ -30,3 +30,7 @@ generate:
 # Exécuter les migrations
 migrate:
 	npx drizzle-kit migrate
+
+# Drizzle studio
+studio:
+	npx drizzle-kit studio
