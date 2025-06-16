@@ -1,4 +1,5 @@
-import type { Context } from "hono";
+import type { z } from "zod"
+import type { registerSchema } from "../validators/auth.validator.js"
 
 
-export const registerUser = async (name:string , email:string, password:string) => {}
+export const registerUser = async (data : z.infer<typeof registerSchema>) => {}

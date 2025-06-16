@@ -1,12 +1,14 @@
 import type { Context } from "hono"
 import { registerUser } from "../services/auth.service.js"
+import { registerSchema } from "../validators/auth.validator.js"
 
 export const register = async (c: Context) => {
-  // 
-  const { name, email, password } = await c.req.json()
+  // validate des données d'entrée (body)
+  const validated = registerSchema.safeParse(await c.req.json())
+  if (!validated.success) return c.json({ success:false, message: validated.error.message }, 400)
 
   try {
-    const user = await registerUser(name, email, password)
+    const user = await registerUser(validated.data)
     return c.json({success:true, message: "Utilisateur créé avec succès", user}, 201)
 
   } catch (error) {
