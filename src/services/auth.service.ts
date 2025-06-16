@@ -18,4 +18,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>) => {
   // Création de l'utilisateur
   const newUser = await createUser(name, email, hashedPassword)
 
+  // Retour de l'utilisateur créé
+  return newUser
+
 }

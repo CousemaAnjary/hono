@@ -8,8 +8,8 @@ export const register = async (c: Context) => {
   if (!validated.success) return c.json({ success:false, message: validated.error.message }, 400)
 
   try {
-    const user = await registerUser(validated.data)
-    return c.json({success:true, message: "Utilisateur créé avec succès", user}, 201)
+    const newUser = await registerUser(validated.data)
+    return c.json({success:true, message: "Utilisateur créé avec succès", newUser}, 201)
 
   } catch (error) {
     return c.json({success:false, message: "Une erreur inconnue est survenue"}, 500)
