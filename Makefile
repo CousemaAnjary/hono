@@ -2,7 +2,7 @@
 # Docker Makefile
 # ----------------------------------------------------------------------
 
-# Démarrer les conteneurs
+# Démarrer tous les services dans (docker-compose.yml)
 up:
 	docker compose up --build
 
