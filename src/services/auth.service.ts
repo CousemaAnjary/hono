@@ -20,5 +20,4 @@ export const registerUser = async (data: z.infer<typeof registerSchema>) => {
 
   // Retour de l'utilisateur créé
   return newUser
-
 }

@@ -12,6 +12,10 @@ export const register = async (c: Context) => {
     return c.json({success:true, message: "Utilisateur créé avec succès", newUser}, 201)
 
   } catch (error) {
+    if (error instanceof Error) {
+      return c.json({success:false, message: error.message}, 409)
+    }
+    // En cas d'erreur inconnue
     return c.json({success:false, message: "Une erreur inconnue est survenue"}, 500)
   }
 }
