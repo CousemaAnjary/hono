@@ -17,3 +17,16 @@ clean:
 # rebuild uniquement l image de Hono
 rebuild:
 	docker compose build hono-app
+
+
+# ----------------------------------------------------------------------
+#  Drizzle Makefile
+# ----------------------------------------------------------------------
+
+# Générer les migrations 
+generate:
+	npx drizzle-kit generate
+
+# Exécuter les migrations
+migrate:
+	npx drizzle-kit migrate
