@@ -1,1 +1,1 @@
-export * from "../../models/auth.model.js"
+export * from "./auth.model.js";
