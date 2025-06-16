@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
 dotenv.config()
 import { serve } from '@hono/node-server'
 

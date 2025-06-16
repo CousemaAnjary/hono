@@ -1,6 +1,6 @@
 import type { Context } from "hono"
-import { registerUser } from "../services/auth.service.js"
-import { registerSchema } from "../validators/auth.validator.js"
+import { registerUser } from "../services/auth.service"
+import { registerSchema } from "../validators/auth.validator"
 
 export const register = async (c: Context) => {
   // validate des données d'entrée (body)

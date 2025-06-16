@@ -1,6 +1,6 @@
 import "dotenv/config"
 import { Pool } from "pg"
-import * as schema from "../models/index.js"
+import * as schema from "../models/index"
 import { drizzle } from "drizzle-orm/node-postgres"
 
 
