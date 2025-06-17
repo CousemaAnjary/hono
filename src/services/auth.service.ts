@@ -1,6 +1,6 @@
 import type { z } from "zod"
-import * as bcrypt from "bcrypt"
-import type { registerSchema } from "../validators/auth.validator.js"
+import { hashPassword } from "../utils/hash"
+import type { registerSchema } from "../validators/auth.validator"
 import { createUser, findUserByEmail } from "../repositories/auth.repository"
 
 
@@ -13,7 +13,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>) => {
   if (existingUser) throw new Error("cet email est déjà utilisé")
 
   // hashage du mot de passe
-  const hashedPassword = await bcrypt.hash(password, 10)
+  const hashedPassword = await hashPassword(password)
 
   // Création de l'utilisateur
   const newUser = await createUser(name, email, hashedPassword)
