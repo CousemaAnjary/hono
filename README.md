@@ -14,4 +14,10 @@ Une API rapide , légère et modulaire construite avec [Hono](https://hone.dev/)
 
 ```bash
 git clone [URL_REPO]
+```
+2. Installation des dépendances
+
+```bash
+npm install
+```
 
