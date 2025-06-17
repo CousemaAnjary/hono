@@ -4,9 +4,9 @@ Une API rapide , légère et modulaire construite avec [Hono](https://hone.dev/)
 
 ## Prérequis
 
-- Node.js ( version 22 )
-- Docker et Docker Compose
-- npm ou pnpm 
+- **Node.js** `v22+`
+- **Docker** et **Docker Compose**
+- **npm** ou **pnpm**
 
 ## Installation
 
