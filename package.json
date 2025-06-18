@@ -12,11 +12,13 @@
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
     "hono": "^4.7.11",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.0",
     "zod": "^3.25.65"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20.11.17",
     "@types/pg": "^8.15.4",
     "drizzle-kit": "^0.31.1",
