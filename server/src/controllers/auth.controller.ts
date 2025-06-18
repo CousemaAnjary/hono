@@ -28,18 +28,13 @@ export const login = async (c: Context) => {
 
   try {
     const { user, token } = await loginUser(validated.data)
-    return c.json(
-      { success: true, message: "Connexion réussie", user, token },
-      200
-    )
+    return c.json( { success: true, message: "Connexion réussie", user, token }, 200 )
+     
   } catch (error) {
     if (error instanceof Error) {
       return c.json({ success: false, message: error.message }, 409)
     }
     // En cas d'erreur inconnue
-    return c.json(
-      { success: false, message: "Une erreur inconnue est survenue" },
-      500
-    )
+    return c.json( { success: false, message: "Une erreur inconnue est survenue" },500 )
   }
 }
