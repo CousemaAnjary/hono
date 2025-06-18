@@ -1,11 +1,9 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
 import dotenv from 'dotenv'
-import router from './routes'
-
-// Charger les variables d’environnement
 dotenv.config()
+import { Hono } from 'hono'
+import router from './routes'
+import { cors } from 'hono/cors'
+import { serve } from '@hono/node-server'
 
 // App principale
 const app = new Hono()
