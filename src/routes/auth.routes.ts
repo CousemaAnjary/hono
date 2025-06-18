@@ -1,8 +1,9 @@
 import { Hono } from "hono"
-import { register } from "../controllers/auth.controller"
+import { login, register } from "../controllers/auth.controller"
 
 const authRoutes = new Hono()
   .post('/register', register)
+  .post('/login', login)
 
 
 export default authRoutes
