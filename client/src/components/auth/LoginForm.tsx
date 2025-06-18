@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { login } from "@/src/services/auth.service"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { loginSchema } from "@/src/validators/auth.validator"
+import { setToken } from "@/src/utils/auth"
 
 
 export default function LoginForm() {
@@ -25,7 +26,10 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-      if (!reponse.success) return console.error(reponse.message)  
+      if (!reponse.success) return console.error(reponse.message)
+      
+      // Stocker le token dans le cookie
+      setToken(reponse.token)
     } 
     catch (error) {
      console.error("Erreur lors de la connexion :", error)
