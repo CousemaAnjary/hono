@@ -1,26 +1,25 @@
 {
   "compilerOptions": {
-  
     /* Language and Environment */
-    "target": "es2020",                                 
-    "lib": ["es2020","dom"],                           
-   
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
+
     /* Modules */
-    "module": "commonjs",                               
-    "rootDir": "src",                                    
-    "resolveJsonModule": true,                           
-    "outDir": "./dist",                                 
-    "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,           
+    "module": "commonjs",
+    "rootDir": "src",
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
 
     /* Type Checking */
-    "strict": true,                                  
-  
+    "strict": true,
+
     /* Completeness */
 
     "skipLibCheck": true,
-    "baseUrl": "./src"                             
+    "baseUrl": "./src"
   },
-  
-  "include": ["src/**/*"]
+
+  "include": ["src/**/*", "src/validators"]
 }

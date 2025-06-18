@@ -5,8 +5,9 @@ import { comparePassword, hashPassword } from "../utils/hash"
 import { generateToken } from "../utils/jwt"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
 
-
-export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
+export const registerUser = async (
+  data: z.infer<typeof registerSchema>
+): Promise<User> => {
   // Destructuration des données validées
   const { name, email, password } = data
 
@@ -18,13 +19,15 @@ export const registerUser = async (data: z.infer<typeof registerSchema>): Promis
   const hashedPassword = await hashPassword(password)
 
   // Création de l'utilisateur
-  const newUser = await createUser({name, email, password: hashedPassword})
+  const newUser = await createUser({ name, email, password: hashedPassword })
 
   // Retour de l'utilisateur créé
   return newUser
 }
 
-export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user:User, token:string }> => {
+export const loginUser = async (
+  data: z.infer<typeof loginSchema>
+): Promise<{ user: User; token: string }> => {
   // Destructuration des données validées
   const { email, password } = data
 
@@ -37,7 +40,11 @@ export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ us
   if (!isPasswordValid) throw new Error("Mot de passe incorrect")
 
   // Génération d'un token JWT (à implémenter)
-  const token = generateToken({ id: user.id, name:user.name, email: user.email })
+  const token = generateToken({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+  })
 
   // Retour de l'utilisateur et du token
   return { user, token }
