@@ -37,7 +37,7 @@ export const loginUser = async (data: z.infer<typeof loginSchema>) => {
   if (!isPasswordValid) throw new Error("Mot de passe incorrect")
 
   // Génération d'un token JWT (à implémenter)
-  const token = generateToken({ id: user.id, email: user.email })
+  const token = generateToken({ id: user.id, name:user.name, email: user.email })
 
   // Retour de l'utilisateur et du token
   return { user, token}
