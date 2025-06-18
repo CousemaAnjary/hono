@@ -17,7 +17,7 @@ privateRoutes.use("*", authMiddleware) // Appliquer le middleware à toutes les 
 
 
 // Regroupement des routes publiques et privées
-router.route("/", publicRoutes)
+router.route("/d", publicRoutes)
 router.route("/", privateRoutes)
 
 export default router
