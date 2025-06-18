@@ -1,8 +1,7 @@
 import { z } from "zod"
+import { apiUrl } from "../lib/api"
 import { LoginResponse } from "../types/auth"
 import { loginSchema } from "../validators/auth.validator"
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL as string
 
 
 export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResponse> => {
