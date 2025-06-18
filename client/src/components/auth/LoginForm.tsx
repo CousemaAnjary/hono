@@ -25,6 +25,7 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
+      if (!reponse.success) return console.error(reponse.message)
     } 
     catch (error) {
      console.error("Erreur lors de la connexion :", error)

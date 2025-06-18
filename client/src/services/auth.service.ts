@@ -1,7 +1,10 @@
 import { z } from "zod"
+import { LoginResponse } from "../types/auth"
 import { loginSchema } from "../validators/auth.validator"
 
-export const login = async (data: z.infer<typeof loginSchema>):Promise<{user , token}> => {
+
+
+export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResponse> => {
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
