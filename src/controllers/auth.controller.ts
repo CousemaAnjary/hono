@@ -1,5 +1,5 @@
 import type { Context } from "hono"
-import { registerUser } from "../services/auth.service"
+import { loginUser, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 
 export const register = async (c: Context) => {
@@ -28,6 +28,8 @@ export const login = async (c:Context) => {
   if (!validated.success) return c.json({ success:false, message: validated.error.message }, 400)
 
   try {
+    const { user, token } = await loginUser(validated.data)
+    return c.json({success:true, message: "Connexion réussie", user, token}, 200)
 
   } catch (error) {
     if (error instanceof Error) {
