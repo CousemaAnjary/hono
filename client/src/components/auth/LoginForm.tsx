@@ -30,6 +30,7 @@ export default function LoginForm() {
       
       // Stocker le token dans le cookie
       setToken(reponse.token)
+      console.log(reponse.message)
     } 
     catch (error) {
      console.error("Erreur lors de la connexion :", error)
