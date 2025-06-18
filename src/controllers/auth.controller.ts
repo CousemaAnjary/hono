@@ -3,10 +3,9 @@ import { loginUser, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 
 export const register = async (c: Context) => {
-
   // validate des données d'entrée (body)
   const validated = registerSchema.safeParse(await c.req.json())
-  if (!validated.success) return c.json({ success:false, message: validated.error.message }, 400)
+  if (!validated.success) return c.json({ success:false, message:"Validation échouée", errors:validated.error.flatten().fieldErrors }, 400)
 
   try {
     const newUser = await registerUser(validated.data)
