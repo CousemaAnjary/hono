@@ -6,8 +6,16 @@ import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form"
 import { Input } from "../ui/input"
+import { Button } from "../ui/button"
 
 
 
@@ -42,25 +50,59 @@ export default function LoginForm() {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleLogin)}>
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-spaceGrotesk text-base">
-                  Adresse email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="ABDILLAH"
-                    className="bg-white font-spaceGrotesk placeholder:text-muted-foreground dark:bg-zinc-950 max-md:text-sm"
-                  />
-                </FormControl>
-                <FormMessage className="font-spaceGrotesk" />
-              </FormItem>
-            )}
-          />
+          <div>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-spaceGrotesk text-base">
+                    Adresse email
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder="Adresse email"
+                      className="bg-white font-spaceGrotesk placeholder:text-muted-foreground dark:bg-zinc-950 max-md:text-sm"
+                    />
+                  </FormControl>
+                  <FormMessage className="font-spaceGrotesk" />
+                </FormItem>
+              )}
+            />
+          </div>
+
+           <div>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-spaceGrotesk text-base">
+                    Mot de passe                    
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Mot de passe"
+                      className="bg-white font-spaceGrotesk placeholder:text-muted-foreground dark:bg-zinc-950 max-md:text-sm"
+                    />
+                  </FormControl>
+                  <FormMessage className="font-spaceGrotesk" />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <Button
+            type="submit"
+            className="mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Se connecter
+          </Button>
+          
         </form>
       </Form>
     </>
