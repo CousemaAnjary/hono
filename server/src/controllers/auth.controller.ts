@@ -36,8 +36,7 @@ export const register = async (c: Context) => {
 export const login = async (c: Context) => {
   // validate des données d'entrée (body)
   const validated = loginSchema.safeParse(await c.req.json())
-  if (!validated.success)
-    return c.json({ success: false, message: validated.error.message }, 400)
+  if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
     const { user, token } = await loginUser(validated.data)
