@@ -1,8 +1,8 @@
-import type { z } from "zod"
 import { User } from "models"
-import { generateToken } from "../utils/jwt"
-import { comparePassword, hashPassword } from "../utils/hash"
+import type { z } from "zod"
 import { createUser, findUserByEmail } from "../repositories/auth.repository"
+import { comparePassword, hashPassword } from "../utils/hash"
+import { generateToken } from "../utils/jwt"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
 
 
@@ -24,7 +24,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>): Promis
   return newUser
 }
 
-export const loginUser = async (data: z.infer<typeof loginSchema>) => {
+export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user:User, token:string }> => {
   // Destructuration des données validées
   const { email, password } = data
 
@@ -40,5 +40,5 @@ export const loginUser = async (data: z.infer<typeof loginSchema>) => {
   const token = generateToken({ id: user.id, name:user.name, email: user.email })
 
   // Retour de l'utilisateur et du token
-  return { user, token}
+  return { user, token }
 }
