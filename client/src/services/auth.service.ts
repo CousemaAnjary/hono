@@ -11,7 +11,6 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   })
-  if (!res.ok) throw new Error("Login failed")
   
   return await res.json()
 }

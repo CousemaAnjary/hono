@@ -35,11 +35,12 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-      if (!reponse.success) return console.error(reponse.message)
+      if (!reponse.success) return console.log(reponse.message)
 
       // Stocker le token dans le cookie
       setToken(reponse.token)
       console.log(reponse.message)
+
     } catch (error) {
       console.error("Erreur lors de la connexion :", error)
     }
@@ -102,7 +103,7 @@ export default function LoginForm() {
           >
             Se connecter
           </Button>
-          
+
         </form>
       </Form>
     </>
