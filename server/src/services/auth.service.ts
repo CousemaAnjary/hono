@@ -5,9 +5,8 @@ import { comparePassword, hashPassword } from "../utils/hash"
 import { generateToken } from "../utils/jwt"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
 
-export const registerUser = async (
-  data: z.infer<typeof registerSchema>
-): Promise<User> => {
+export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
+
   // Destructuration des données validées
   const { name, email, password } = data
 
@@ -25,9 +24,8 @@ export const registerUser = async (
   return newUser
 }
 
-export const loginUser = async (
-  data: z.infer<typeof loginSchema>
-): Promise<{ user: User; token: string }> => {
+export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user: User; token: string }> => {
+  
   // Destructuration des données validées
   const { email, password } = data
 
