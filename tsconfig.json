@@ -1,14 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
-    "module": "commonjs",
-    "strict": true,
-    "verbatimModuleSyntax": false,
+  
+    /* Language and Environment */
+    "target": "es2020",                                 
+    "lib": ["es2020","dom"],                           
+   
+    /* Modules */
+    "module": "commonjs",                               
+    "rootDir": "src",                                    
+    "resolveJsonModule": true,                           
+    "outDir": "./dist",                                 
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,           
+
+    /* Type Checking */
+    "strict": true,                                  
+  
+    /* Completeness */
+
     "skipLibCheck": true,
-    "types": ["node"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "outDir": "./dist"
+    "baseUrl": "./src"                             
   },
-  "exclude": ["node_modules"]
+  
+  "include": ["src/**/*"]
 }
