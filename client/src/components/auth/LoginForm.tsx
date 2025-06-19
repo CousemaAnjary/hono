@@ -34,9 +34,9 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-
-      // Stocker le token dans le cookie
       setToken(reponse.token)
+
+      // Redirection vers la page d'accueil ou dashboard
       toast.success(reponse.message)
 
     } catch (error) {
