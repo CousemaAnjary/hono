@@ -5,7 +5,9 @@ import { setToken } from "@/src/utils/auth"
 import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
+import { Button } from "../ui/button"
 import {
   Form,
   FormControl,
@@ -15,10 +17,6 @@ import {
   FormMessage,
 } from "../ui/form"
 import { Input } from "../ui/input"
-import { Button } from "../ui/button"
-import { toast } from "sonner"
-
-
 
 export default function LoginForm() {
   // ! STATE (état, données) de l'application
@@ -36,14 +34,15 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-      if (!reponse.success) return void toast.warning(reponse.message)
 
       // Stocker le token dans le cookie
       setToken(reponse.token)
       toast.success(reponse.message)
 
     } catch (error) {
-      console.error("Erreur lors de la connexion :", error)
+      if (error instanceof Error) {
+        toast.error(error.message)
+      }
     }
   }
 
@@ -75,14 +74,14 @@ export default function LoginForm() {
             />
           </div>
 
-           <div>
+          <div>
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="font-spaceGrotesk text-base">
-                    Mot de passe                    
+                    Mot de passe
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -104,7 +103,6 @@ export default function LoginForm() {
           >
             Se connecter
           </Button>
-
         </form>
       </Form>
     </>
