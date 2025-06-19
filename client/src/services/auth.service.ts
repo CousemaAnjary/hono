@@ -10,6 +10,5 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   })
-  
   return await res.json()
 }
