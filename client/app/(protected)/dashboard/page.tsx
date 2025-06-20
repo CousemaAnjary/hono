@@ -1,6 +1,9 @@
+'use client'
+import { getCurrentUser } from "@/src/lib/auth"
+
 export default function DashboardPage() {
   // ! STATE (état, données) de l'application
-  
+    const user = getCurrentUser()
   
   // ! ACTIONS (actions, fonctions) de l'application
   
@@ -9,8 +12,9 @@ export default function DashboardPage() {
   return (
     <>
       <h1>Dashboard</h1>
-      <p>Welcome to your dashboard!</p>
+      <p>Welcome to your dashboard! {user?.name}</p>
       {/* Add more components or content here as needed */}
+
     </>
   )
 }
