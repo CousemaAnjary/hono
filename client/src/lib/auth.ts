@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode"
 import { getToken } from "./cookies"
 
 
-export const getCurrentUser = (): User | null => {
+export const getCurrentUser = (): User | null => { // obtenir l'utilisateur actuel
   const token = getToken()
   if (!token) return null
 
@@ -14,5 +14,4 @@ export const getCurrentUser = (): User | null => {
   } catch (error) {
     return null
   }
-
 }
