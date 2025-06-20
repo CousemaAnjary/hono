@@ -1,7 +1,7 @@
 "use client"
 
 import { login } from "@/src/services/auth.service"
-import { setToken } from "@/src/utils/auth"
+import { setToken } from "@/src/lib/cookies"
 import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
