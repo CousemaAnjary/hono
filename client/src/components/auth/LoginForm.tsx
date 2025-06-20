@@ -17,12 +17,14 @@ import {
   FormMessage,
 } from "../ui/form"
 import { Input } from "../ui/input"
+import { useRouter } from "next/navigation"
 
 
 
 export default function LoginForm() {
   // ! STATE (état, données) de l'application
 
+  const router = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -39,6 +41,7 @@ export default function LoginForm() {
       setToken(reponse.token)
 
       // Redirection vers la page d'accueil ou dashboard
+      router.push("/dashboard")
       toast.success(reponse.message)
 
     } catch (error) {
