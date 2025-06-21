@@ -13,6 +13,7 @@ export default function DashboardPage() {
     <>
       <h1>Dashboard</h1>
       <p>Welcome to your dashboard! {user?.name}</p>
+      <p>{user?.email}</p>
       {/* Add more components or content here as needed */}
 
     </>
