@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation"
 export default function LoginForm() {
   // ! STATE (état, données) de l'application
 
-  const router = useRouter()
+  // const router = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -37,9 +37,9 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-      
+
       // Redirection vers la page d'accueil ou dashboard
-      router.push("/dashboard")
+      // router.push("/dashboard")
       toast.success(reponse.message)
 
     } catch (error) {
