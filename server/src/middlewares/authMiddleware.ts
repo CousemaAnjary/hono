@@ -1,11 +1,9 @@
 import { MiddlewareHandler } from "hono"
+import { getAuthCookie } from "utils/cookies.server"
 import { verifyToken } from "utils/jwt"
 
-
-export const authMiddleware:MiddlewareHandler = async (c, next) => {
-  const authHeader = c.req.header("Authorization")
-
-  const token = authHeader?.split(" ")[1]
+export const authMiddleware: MiddlewareHandler = async (c, next) => {
+  const token = getAuthCookie(c)
   if (!token) return c.json({ success: false, message: "Token manquant" }, 401)
 
   try {
@@ -16,7 +14,6 @@ export const authMiddleware:MiddlewareHandler = async (c, next) => {
     c.set("user", payload)
 
     return next()
-
   } catch (error) {
     return c.json({ success: false, message: "Token invalide ou expiré" }, 401)
   }
