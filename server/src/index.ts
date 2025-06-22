@@ -7,8 +7,11 @@ import { serve } from '@hono/node-server'
 // App principale
 const app = new Hono()
 
-// Middleware CORS (autorise toutes les origines par défaut)app.use(cors())
-app.use('*', cors())
+// Middleware CORS (autorise toutes les origines par défaut)
+app.use('*', cors({
+  origin: "http://localhost:3000",
+  credentials: true,
+}))
 
 // Routes
 app.route("/api", router)

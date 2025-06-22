@@ -1,0 +1,5 @@
+
+
+### Get current user information
+GET http://localhost:4000/api/user/me
+Content-Type: application/json
