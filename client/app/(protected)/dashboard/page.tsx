@@ -1,4 +1,3 @@
-'use client'
 import { getCurrentUser } from "@/src/lib/auth"
 
 export default function DashboardPage() {
