@@ -8,7 +8,6 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
   const res = await fetch(`${apiUrl}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify(data),
   })
   if (!res.ok) {
