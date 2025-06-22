@@ -1,6 +1,6 @@
 import { Context } from "hono"
 import { deleteCookie, getCookie, setCookie } from "hono/cookie"
-import { get } from "http"
+
 
 const COOKIE_NAME = "auth_token"
 
@@ -13,7 +13,7 @@ const COOKIE_NAME = "auth_token"
 export const setAuthCookie = (c: Context, token: string) => {
   setCookie(c, COOKIE_NAME, token, {
     httpOnly: true, // cookie Http-Only
-    secure: process.env.NODE_ENV === "production", // seulement pour HTTPS en production
+    secure: process.env.NODE_ENV === "production", // seulement pour HTTPS en production( cache le cookie)
     path: "/", // accessible sur tout le site
     sameSite: "Strict", // strict pour éviter les attaques CSRF
     maxAge: 60 * 60, // expire dans 1 heure
