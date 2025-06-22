@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/src/lib/auth" // ou le chemin vers ta fonction
 
 export default async function DashboardPage() {
-  // ✅ Appel côté serveur
+  
   const {user} = await getCurrentUser()
 
   return (
