@@ -13,7 +13,7 @@ const COOKIE_NAME = "auth_token"
 export const setAuthCookie = (c: Context, token: string) => {
   setCookie(c, COOKIE_NAME, token, {
     httpOnly: true, // cookie Http-Only
-    secure: true, // seulement pour HTTPS
+    secure: process.env.NODE_ENV === "production", // seulement pour HTTPS en production
     path: "/", // accessible sur tout le site
     sameSite: "Strict", // strict pour éviter les attaques CSRF
     maxAge: 60 * 60, // expire dans 1 heure
