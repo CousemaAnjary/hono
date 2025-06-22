@@ -8,6 +8,7 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
   const res = await fetch(`${apiUrl}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    credentials: "include", // pour que le cookie envoyé par le serveur soit stocké dans le navigateur 
     body: JSON.stringify(data),
   })
   if (!res.ok) {
