@@ -2,7 +2,7 @@ import { getCurrentUser } from "@/src/lib/auth"
 
 export default async function DashboardPage() {
   // ! STATE (état, données) de l'application
-  const { user } = await getCurrentUser()
+  // const { user } = await getCurrentUser()
 
   // ! ACTIONS (actions, fonctions) de l'application
 
@@ -10,7 +10,7 @@ export default async function DashboardPage() {
   return (
     <>
       <h1>Dashboard</h1>
-      <p>Welcome to your dashboard! {user.name}</p>
+      {/* <p>Welcome to your dashboard! {user.name}</p> */}
       {/* Add more components or content here as needed */}
     </>
   )
