@@ -13,7 +13,7 @@ const publicRoutes = new Hono()
 // Route protégées (avec middleware)
 const privateRoutes = new Hono()
 privateRoutes.use("*", authMiddleware) 
-  .route("/users", userRoutes)
+  .route("/user", userRoutes)
 
 
 
