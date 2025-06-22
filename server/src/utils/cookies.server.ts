@@ -1,9 +1,7 @@
 import { Context } from "hono"
 import { deleteCookie, getCookie, setCookie } from "hono/cookie"
 
-
 const COOKIE_NAME = "auth_token"
-
 
 /**
  * Définit un cookie HTTP-only contenant le token.
