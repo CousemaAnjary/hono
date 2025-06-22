@@ -1,5 +1,8 @@
 
 
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtZSI6IkFCRElMTEFIIENvdXNlbWEgQW5qYXJ5IiwiZW1haWwiOiJhbmphcnlhYmRpbGxhaEBnbWFpbC5jb20iLCJpYXQiOjE3NTA2MDMzNTMsImV4cCI6MTc1MDYwNjk1M30.bRDR0y5On60QOlscE8MMG3r3Vgicpz6Fq1n0e_YCG8s
+
 ### Get current user information
 GET http://localhost:4000/api/user/me
 Content-Type: application/json
+Cookie: auth_token={{token}}
