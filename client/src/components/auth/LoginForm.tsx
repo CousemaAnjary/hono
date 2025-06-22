@@ -1,7 +1,6 @@
 "use client"
 
 import { login } from "@/src/services/auth.service"
-import { setToken } from "@/src/lib/cookies"
 import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -38,8 +37,7 @@ export default function LoginForm() {
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     try {
       const reponse = await login(data)
-      setToken(reponse.token)
-
+      
       // Redirection vers la page d'accueil ou dashboard
       router.push("/dashboard")
       toast.success(reponse.message)

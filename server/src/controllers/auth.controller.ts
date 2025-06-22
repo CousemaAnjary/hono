@@ -35,7 +35,7 @@ export const login = async (c: Context) => {
     // On stocke le token dans un cookie Http-Only
     setAuthCookie(c, token)
 
-    return c.json( { success: true, message: "Connexion réussie", user, token }, 200 )
+    return c.json( { success: true, message: "Connexion réussie", user }, 200 )
      
   } catch (error) {
     if (error instanceof Error) {
