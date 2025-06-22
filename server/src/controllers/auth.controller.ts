@@ -1,6 +1,8 @@
 import type { Context } from "hono"
+import { setAuthCookie } from "utils/cookies.server"
 import { loginUser, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
+
 
 export const register = async (c: Context) => {
 
@@ -22,12 +24,17 @@ export const register = async (c: Context) => {
 }
 
 export const login = async (c: Context) => {
+  
   // validate des données d'entrée (body)
   const validated = loginSchema.safeParse(await c.req.json())
   if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
     const { user, token } = await loginUser(validated.data)
+
+    // On stocke le token dans un cookie Http-Only
+    setAuthCookie(c, token)
+
     return c.json( { success: true, message: "Connexion réussie", user, token }, 200 )
      
   } catch (error) {
