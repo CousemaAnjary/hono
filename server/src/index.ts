@@ -10,7 +10,7 @@ const app = new Hono()
 // Middleware CORS (autorise toutes les origines par défaut)
 app.use('*', cors({
   origin: "http://localhost:3000",
-  credentials: true,
+  credentials: true, // Autorise les cookies 
 }))
 
 // Routes
