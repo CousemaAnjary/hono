@@ -1,17 +1,16 @@
-import { User } from "../types/auth"
-import { jwtDecode } from "jwt-decode"
-import { getToken } from "./cookies"
+import { apiUrl } from "./api"
+import { getCurrentUserResponse } from "../types/auth"
 
 
-export const getCurrentUser = (): User | null => { // obtenir l'utilisateur actuel
-  const token = getToken()
-  if (!token) return null
-
-  try {
-    const payload = jwtDecode(token) as User
-    return payload
-
-  } catch (error) {
-    return null
+export const getCurrentUser = async ():Promise<getCurrentUserResponse>  => { 
+  const res = await fetch(`${apiUrl}/user/me`, {
+    method: "GET",
+    credentials: "include",
+  })
+  if(!res.ok) {
+    const errorData = await res.json()
+    throw new Error(errorData.message)
   }
+  
+  return await res.json() 
 }
