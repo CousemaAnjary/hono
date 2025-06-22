@@ -1,4 +1,5 @@
 import { Button } from "@/src/components/ui/button"
+import Link from "next/link"
 
 export default function page() {
   // ! STATE (état, données) de l'application
@@ -8,7 +9,9 @@ export default function page() {
   // ! AFFICHAGE (affichage, UI) de l'application
   return (
     <>
-      <Button className="bg-blue-950 font-semibold m-2 rounded-sm"> Hello World </Button>
+      <Button asChild className="font-semibold m-5 bg-blue-950">
+        <Link href="/login">Login</Link>
+      </Button>
     </>
   )
 }
