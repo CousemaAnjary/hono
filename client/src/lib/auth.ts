@@ -1,16 +1,17 @@
-import { apiUrl } from "./api"
-import { getCurrentUserResponse } from "../types/auth"
+import type { User } from "@/src/types/auth"
+import { jwtDecode } from "jwt-decode"
+import { cookies } from "next/headers"
 
+export const getServerUser = async (): Promise<User | null> => {
 
-export const getCurrentUser = async ():Promise<getCurrentUserResponse>  => { 
-  const res = await fetch(`${apiUrl}/user/me`, {
-    method: "GET",
-    credentials: "include",
-  })
-  if(!res.ok) {
-    const errorData = await res.json()
-    throw new Error(errorData.message)
+  const cookieStore = await cookies()
+  const token = cookieStore.get("auth_token")?.value
+  if (!token) return null
+
+  try {
+    return jwtDecode<User>(token)
+    
+  } catch {
+    return null
   }
-  
-  return await res.json() 
 }
