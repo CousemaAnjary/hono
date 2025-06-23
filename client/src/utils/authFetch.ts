@@ -2,6 +2,7 @@ import { refreshAccessToken } from "../services/auth.service"
 
 export const authFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
 
+  //
   const finalOptions: RequestInit = {
     ...options,
     credentials: "include",
@@ -15,9 +16,11 @@ export const authFetch = async (url: string, options: RequestInit = {}): Promise
 
   // 🔁 Si le token est expiré, on tente un refresh puis on réessaie une seule fois
   if (response.status === 401) {
+
     try {
       await refreshAccessToken()
       response = await fetch(url, finalOptions)
+
     } catch (err) {
       throw new Error("Session expirée. Veuillez vous reconnecter.")
     }
@@ -25,7 +28,7 @@ export const authFetch = async (url: string, options: RequestInit = {}): Promise
 
   if (!response.ok) {
     const errorData = await response.json()
-    throw new Error(errorData.message || "Erreur inconnue")
+    throw new Error(errorData.message)
   }
 
   return response
