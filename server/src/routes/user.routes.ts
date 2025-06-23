@@ -1,5 +1,5 @@
-import { getCurrentUser } from "controllers/user.controller"
 import { Hono } from "hono"
+import { getCurrentUser } from "controllers/user.controller"
 
 
 const userRoutes = new Hono()
