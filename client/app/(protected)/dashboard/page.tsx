@@ -1,9 +1,10 @@
-import { getServerUser } from "@/src/lib/auth"
+import { getCurrentUser } from "@/src/lib/auth"
+
 
 
 export default async function DashboardPage() {
 
-  const user = await getServerUser()
+  const user = await getCurrentUser()
 
   return (
     <div className="p-4">
