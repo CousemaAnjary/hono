@@ -8,7 +8,7 @@ const COOKIE_NAME = "auth_token"
  * @param c - Le contexte Hono
  * @param token - Le token JWT à stocker dans le cookie
  */
-export const setAuthCookie = (c: Context, token: string) => {
+export const setAccessTokenCookie = (c: Context, token: string) => {
   setCookie(c, COOKIE_NAME, token, {
     httpOnly: true, // cookie Http-Only
     secure: process.env.NODE_ENV === "production", // seulement pour HTTPS en production( cache le cookie)
@@ -23,7 +23,7 @@ export const setAuthCookie = (c: Context, token: string) => {
  * @param c - Le contexte Hono
  * @returns Le token JWT ou undefined si le cookie n'existe pas
  */
-export const getAuthCookie = (c: Context): string | undefined => {
+export const getAccessTokenCookie = (c: Context): string | undefined => {
   return getCookie(c, COOKIE_NAME)
 }
 
@@ -31,7 +31,7 @@ export const getAuthCookie = (c: Context): string | undefined => {
  * Supprime le cookie HTTP-only contenant le token.
  * @param c - Le contexte Hono
  */
-export const deleteAuthCookie = (c: Context) => {
+export const deleteAccessTokenCookie = (c: Context) => {
   deleteCookie(c, COOKIE_NAME, {
     httpOnly: true, // cookie Http-Only
     path: "/", // doit correspondre au path du cookie

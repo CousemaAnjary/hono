@@ -1,5 +1,5 @@
 import type { Context } from "hono"
-import { setAuthCookie } from "utils/cookies.server"
+import { setAccessTokenCookie } from "utils/cookies/accessToken"
 import { loginUser, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 
@@ -33,7 +33,7 @@ export const login = async (c: Context) => {
     const { user, token } = await loginUser(validated.data)
 
     // On stocke le token dans un cookie Http-Only
-    setAuthCookie(c, token)
+    setAccessTokenCookie(c, token)
 
     return c.json( { success: true, message: "Connexion réussie", user }, 200 )
      
