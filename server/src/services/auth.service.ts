@@ -1,9 +1,15 @@
+import { set, type z } from "zod"
 import { User } from "models"
-import type { z } from "zod"
-import { createUser, findUserByEmail } from "../repositories/auth.repository"
+import { Context } from "hono"
+import jwt from "jsonwebtoken"
+import { generateToken, verifyToken } from "../utils/jwt"
 import { comparePassword, hashPassword } from "../utils/hash"
-import { generateToken } from "../utils/jwt"
+import { setAccessTokenCookie } from "utils/cookies/accessToken"
+import { createUser, findUserByEmail } from "../repositories/auth.repository"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
+import { getRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
+
+
 
 export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
 
@@ -46,4 +52,22 @@ export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ us
 
   // Retour de l'utilisateur et du token
   return { user, token }
+}
+
+
+export const refreshAccessToken = async (c : Context): Promise<{ success: boolean; message: string }> => {
+
+  const token = getRefreshTokenCookie(c)
+  if (!token) throw new Error("Token de rafraîchissement manquant")
+
+  const payload = verifyToken(token)
+  
+  const newAccessToken = generateToken(payload)
+  const newRefreshToken = jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: "7d" })
+
+  setAccessTokenCookie(c, newAccessToken)
+  setRefreshTokenCookie(c, newRefreshToken)
+
+  return { success: true, message: "Token renouvelé avec succès" }
+  
 }

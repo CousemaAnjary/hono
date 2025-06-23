@@ -1,6 +1,7 @@
 import type { Context } from "hono"
-import { setAccessTokenCookie } from "utils/cookies/accessToken"
-import { loginUser, registerUser } from "../services/auth.service"
+import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
+import { deleteRefreshTokenCookie } from "utils/cookies/refreshToken"
+import { loginUser, refreshAccessToken, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 
 
@@ -45,3 +46,28 @@ export const login = async (c: Context) => {
     return c.json( { success: false, message: "Une erreur inconnue est survenue" },500 )
   }
 }
+
+export const refreshToken = async (c: Context) => {
+
+  try {
+    const result = await refreshAccessToken(c)
+    return c.json(result, 200)
+
+  } catch (error) {
+
+    // en cas d'erreur, on supprime les cookies même si l erreur est connue
+    deleteAccessTokenCookie(c)
+    deleteRefreshTokenCookie(c)
+
+
+    if (error instanceof Error) {
+      return c.json({ success: false, message: error.message }, 401)
+    }
+    
+   
+    // En cas d'erreur inconnue
+    return c.json({ success: false, message: "Une erreur inconnue est survenue" }, 500)
+  }
+}
+
+
