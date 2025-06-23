@@ -1,9 +1,10 @@
-import { MiddlewareHandler } from "hono"
-import { getAuthCookie } from "utils/cookies.server"
 import { verifyToken } from "utils/jwt"
+import { MiddlewareHandler } from "hono"
+import { getAccessTokenCookie } from "utils/cookies/accessToken"
+
 
 export const authMiddleware: MiddlewareHandler = async (c, next) => {
-  const token = getAuthCookie(c)
+  const token = getAccessTokenCookie(c)
   if (!token) return c.json({ success: false, message: "Token manquant" }, 401)
 
   try {
