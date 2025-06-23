@@ -1,3 +1,4 @@
+// La méthode cookies() de next/headers permet de uniquement de lire le cookies côté serveur.
 import { cookies } from "next/headers"
 
 
@@ -9,14 +10,4 @@ export const getToken = async (): Promise<string | null> => {
   const cookieStore = await cookies()
   const token = cookieStore.get("auth_token")?.value
   return token || null
-}
-
-
-/**
- * Supprime le cookie d'authentification.
- * @return {Promise<void>}
- */
-export const deleteToken = async (): Promise<void> => {
-  const cookieStore = await cookies()
-  cookieStore.delete("auth_token")
 }
