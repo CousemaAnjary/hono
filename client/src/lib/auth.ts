@@ -1,6 +1,5 @@
 import type { User } from "@/src/types/auth"
 import { jwtDecode } from "jwt-decode"
-import { cookies } from "next/headers"
 import { getToken } from "./cookie"
 
 export const getServerUser = async (): Promise<User | null> => {
