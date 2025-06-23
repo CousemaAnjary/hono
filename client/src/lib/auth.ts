@@ -1,11 +1,12 @@
 import type { User } from "@/src/types/auth"
 import { jwtDecode } from "jwt-decode"
 import { cookies } from "next/headers"
+import { getToken } from "./cookie"
 
 export const getServerUser = async (): Promise<User | null> => {
 
-  const cookieStore = await cookies()
-  const token = cookieStore.get("auth_token")?.value
+  // Récupère le Token d'authentification depuis les cookies
+  const token = await getToken()
   if (!token) return null
 
   try {
