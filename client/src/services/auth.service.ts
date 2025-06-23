@@ -15,6 +15,6 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
     const errorData = await res.json()
     throw new Error(errorData.message)
   }
-
+  
   return await res.json()
 }
