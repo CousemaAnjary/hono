@@ -18,3 +18,16 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
   
   return await res.json()
 }
+
+
+export const refreshAccessToken = async () => {
+  const res = await fetch(`${apiUrl}/auth/refresh`, {
+    method: "POST", 
+    credentials: "include", 
+  })
+  if (!res.ok) {
+    const errorData = await res.json()
+    throw new Error(errorData.message)
+  }
+  return await res.json()
+}
