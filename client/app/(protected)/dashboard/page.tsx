@@ -1,4 +1,5 @@
-import { getCurrentUser } from "@/src/services/user.service"
+import { getCurrentUser } from "@/src/lib/auth"
+
 
 
 export default async function DashboardPage() {

@@ -1,10 +1,7 @@
 import { apiUrl } from "../lib/api"
-import { getToken } from "../lib/cookie"
 import { refreshAccessToken } from "../services/auth.service"
 
 export const authFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
-
-   const token = await getToken()
 
   // Préfixe l'URL avec l'API de base si nécessaire
   const fullUrl = url.startsWith("http") ? url : `${apiUrl}${url}`
@@ -12,11 +9,9 @@ export const authFetch = async (url: string, options: RequestInit = {}): Promise
   // Options par défaut pour la requête fetch
   const finalOptions: RequestInit = {
     ...options,
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      "Cookie" : `auth_token=${token}`, 
-      
-      
       ...options.headers,
     },
   }
