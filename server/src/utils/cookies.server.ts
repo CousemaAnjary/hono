@@ -33,7 +33,9 @@ export const getAuthCookie = (c: Context): string | undefined => {
  */
 export const deleteAuthCookie = (c: Context) => {
   deleteCookie(c, COOKIE_NAME, {
+    httpOnly: true, // cookie Http-Only
     path: "/", // doit correspondre au path du cookie
-    secure: true, // seulement pour HTTPS
+    sameSite: "Strict", // strict pour éviter les attaques CSRF
+    secure: process.env.NODE_ENV === "production",
   })
 }
