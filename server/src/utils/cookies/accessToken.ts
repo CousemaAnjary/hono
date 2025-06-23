@@ -14,7 +14,7 @@ export const setAccessTokenCookie = (c: Context, token: string) => {
     secure: process.env.NODE_ENV === "production", // seulement pour HTTPS en production( cache le cookie)
     path: "/", // accessible sur tout le site
     sameSite: "Strict", // strict pour éviter les attaques CSRF
-    maxAge: 60 * 15, // synchro avec la durée de vie du token (15 minutes)
+    maxAge: 60 * 1, // synchro avec la durée de vie du token (15 minutes)
   })
 }
 
