@@ -10,7 +10,6 @@ import type { loginSchema, registerSchema } from "../validators/auth.validator"
 import { getRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
 
 
-
 export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
 
   // Destructuration des données validées
