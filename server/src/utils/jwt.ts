@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken"
+import jwt, { SignOptions } from "jsonwebtoken"
 
 const JWT_SECRET = process.env.JWT_SECRET 
 if (!JWT_SECRET) throw new Error("JWT_SECRET is not defined in environment variables")
@@ -16,8 +16,8 @@ export type JwtPayload = {
  * expiresIn - Bonne pratique : 15 à 30 minutes
  * @returns Une chaîne JWT signée
  */
-export const generateToken = (payload: JwtPayload): string => {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "15m" }) 
+export const generateToken = ( payload: JwtPayload, options:SignOptions ): string => {
+  return jwt.sign(payload, JWT_SECRET,  options) 
 }
 
 /**

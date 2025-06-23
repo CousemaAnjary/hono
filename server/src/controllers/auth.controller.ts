@@ -1,8 +1,10 @@
 import type { Context } from "hono"
-import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
-import { deleteRefreshTokenCookie } from "utils/cookies/refreshToken"
-import { loginUser, refreshAccessToken, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
+import { loginUser, refreshAccessToken, registerUser } from "../services/auth.service"
+import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
+import { deleteRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
+
+
 
 
 export const register = async (c: Context) => {
@@ -31,10 +33,11 @@ export const login = async (c: Context) => {
   if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
-    const { user, token } = await loginUser(validated.data)
+    const { user, accessToken, refreshToken } = await loginUser(validated.data)
 
     // On stocke le token dans un cookie Http-Only
-    setAccessTokenCookie(c, token)
+    setAccessTokenCookie(c, accessToken)
+    setRefreshTokenCookie(c, refreshToken)
 
     return c.json( { success: true, message: "Connexion réussie", user }, 200 )
      

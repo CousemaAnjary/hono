@@ -30,7 +30,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>): Promis
   return newUser
 }
 
-export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user: User; token: string }> => {
+export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user: User, accessToken: string, refreshToken:string  }> => {
   
   // Destructuration des données validées
   const { email, password } = data
@@ -43,15 +43,19 @@ export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ us
   const isPasswordValid = await comparePassword(password, user.password)
   if (!isPasswordValid) throw new Error("Mot de passe incorrect")
 
-  // Génération d'un token JWT (à implémenter)
-  const token = generateToken({
+  // Préparation du payload pour le token
+  const payload = {
     id: user.id,
     name: user.name,
     email: user.email,
-  })
+  }
+
+  // Génération d'un token d'accès et d'un token de rafraîchissement
+  const accessToken = generateToken(payload, {expiresIn: "15m"})
+  const refreshToken = generateToken(payload, {expiresIn: "7d"})
 
   // Retour de l'utilisateur et du token
-  return { user, token }
+  return { user, accessToken, refreshToken }
 }
 
 
@@ -62,8 +66,8 @@ export const refreshAccessToken = async (c : Context): Promise<{ success: boolea
 
   const payload = verifyToken(token)
   
-  const newAccessToken = generateToken(payload)
-  const newRefreshToken = jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: "7d" })
+  const newAccessToken = generateToken(payload, {expiresIn: "15m"})
+  const newRefreshToken = generateToken(payload, {expiresIn: "7d"})
 
   setAccessTokenCookie(c, newAccessToken)
   setRefreshTokenCookie(c, newRefreshToken)
