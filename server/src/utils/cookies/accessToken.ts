@@ -18,6 +18,7 @@ export const setAccessTokenCookie = (c: Context, token: string) => {
   })
 }
 
+
 /**
  * Récupère le cookie HTTP-only contenant le token.
  * @param c - Le contexte Hono
@@ -26,6 +27,7 @@ export const setAccessTokenCookie = (c: Context, token: string) => {
 export const getAccessTokenCookie = (c: Context): string | undefined => {
   return getCookie(c, COOKIE_NAME)
 }
+
 
 /**
  * Supprime le cookie HTTP-only contenant le token.
