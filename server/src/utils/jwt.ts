@@ -13,10 +13,11 @@ export type JwtPayload = {
 /**
  * Génère un token JWT signé
  * @param payload - Données à encoder (ex. { id, email, name })
+ * expiresIn - Bonne pratique : 15 à 30 minutes
  * @returns Une chaîne JWT signée
  */
 export const generateToken = (payload: JwtPayload): string => {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" })
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: "15m" }) 
 }
 
 /**
