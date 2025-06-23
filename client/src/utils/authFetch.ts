@@ -2,7 +2,7 @@ import { refreshAccessToken } from "../services/auth.service"
 
 export const authFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
 
-  //
+  // Options par défaut pour la requête fetch
   const finalOptions: RequestInit = {
     ...options,
     credentials: "include",
