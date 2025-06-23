@@ -4,6 +4,7 @@ import { getAccessTokenCookie } from "utils/cookies/accessToken"
 
 
 export const authMiddleware: MiddlewareHandler = async (c, next) => {
+  
   const token = getAccessTokenCookie(c)
   if (!token) return c.json({ success: false, message: "Token manquant" }, 401)
 
