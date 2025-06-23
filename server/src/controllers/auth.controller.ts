@@ -5,8 +5,6 @@ import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/acc
 import { deleteRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
 
 
-
-
 export const register = async (c: Context) => {
 
   // validate des données d'entrée (body)

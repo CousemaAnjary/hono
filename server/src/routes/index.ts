@@ -1,6 +1,8 @@
 import { Hono } from "hono"
 import authRoutes from "./auth.routes"
+import userRoutes from "./user.routes"
 import { authMiddleware } from "middlewares/authMiddleware"
+
 
 const router = new Hono()
 
@@ -12,7 +14,7 @@ const publicRoutes = new Hono()
 // Route protégées (avec middleware)
 const privateRoutes = new Hono()
 privateRoutes.use("*", authMiddleware) 
-  // .route("/user", userRoutes)
+  .route("/user", userRoutes)
 
 
 
