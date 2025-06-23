@@ -2,7 +2,7 @@ import type { User } from "@/src/types/auth"
 import { jwtDecode } from "jwt-decode"
 import { getToken } from "./cookie"
 
-export const getServerUser = async (): Promise<User | null> => {
+export const getCurrentUser = async (): Promise<User | null> => {
 
   // Récupère le Token d'authentification depuis les cookies
   const token = await getToken()
