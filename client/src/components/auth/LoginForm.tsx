@@ -1,8 +1,9 @@
 "use client"
 
-import { login } from "@/src/services/auth.service"
+import { useLogin } from "@/src/hooks/useLogin"
 import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
@@ -16,14 +17,13 @@ import {
   FormMessage,
 } from "../ui/form"
 import { Input } from "../ui/input"
-import { useRouter } from "next/navigation"
-
-
 
 export default function LoginForm() {
   // ! STATE (état, données) de l'application
 
   const router = useRouter()
+  const { mutate: login, isPending } = useLogin()
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -35,18 +35,15 @@ export default function LoginForm() {
   // ! ACTIONS (actions, fonctions) de l'application
 
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
-    try {
-      const reponse = await login(data)
-
-      // Redirection vers la page d'accueil ou dashboard
-      router.push("/dashboard")
-      toast.success(reponse.message)
-
-    } catch (error) {
-      if (error instanceof Error) {
+    login(data, {
+      onSuccess: () => {
+        toast.success("Connexion réussie !")
+        router.push("/dashboard")
+      },
+      onError: (error) => {
         toast.error(error.message)
-      }
-    }
+      },
+    })
   }
 
   // ! AFFICHAGE (affichage, UI) de l'application
