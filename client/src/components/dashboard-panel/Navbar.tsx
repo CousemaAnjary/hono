@@ -11,7 +11,7 @@ export default function Navbar() {
   
   // ! AFFICHAGE (affichage, UI) de l'application
   return (
-     <header className="border-b px-4 md:px-6">
+     <header className="border-b px-4 md:px-14">
       <div className="flex h-16 items-center justify-between gap-4">
 
         {/* Left side */}
