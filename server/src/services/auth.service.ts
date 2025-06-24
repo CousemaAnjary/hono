@@ -1,14 +1,9 @@
 import { z } from "zod"
 import { User } from "models"
-import { Context } from "hono"
-import jwt from "jsonwebtoken"
-import { generateToken, verifyToken } from "../utils/jwt"
+import { generateToken } from "../utils/jwt"
 import { comparePassword, hashPassword } from "../utils/hash"
-import { setAccessTokenCookie } from "utils/cookies/accessToken"
 import { createUser, findUserByEmail } from "../repositories/auth.repository"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
-import { getRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
-
 
 
 export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
