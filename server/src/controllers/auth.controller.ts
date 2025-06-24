@@ -1,5 +1,5 @@
 import type { Context } from "hono"
-import { setAccessTokenCookie } from "utils/cookies/accessToken"
+import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
 import { loginUser, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 
@@ -45,4 +45,9 @@ export const login = async (c: Context) => {
     // En cas d'erreur inconnue
     return c.json( { success: false, message: "Une erreur inconnue est survenue" },500 )
   }
+}
+
+export const logout = async (c: Context) => {
+  deleteAccessTokenCookie(c)
+  return c.json({ success: true, message: "Déconnexion réussie" }, 200)
 }
