@@ -34,7 +34,7 @@ export default function UserMenu() {
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
           <Avatar>
             <AvatarImage src="./avatar.jpg" alt="Profile image" />
-            <AvatarFallback>KK</AvatarFallback>
+            <AvatarFallback>AC</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
