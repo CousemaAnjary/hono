@@ -4,6 +4,7 @@ import { apiUrl } from "@/src/lib/api"
 import { User } from "@/src/types/auth"
 import { useEffect, useState } from "react"
 
+
 export default function DashboardPage() {
 const [user, setUser] = useState<User | null>(null)
 
@@ -30,5 +31,7 @@ const [user, setUser] = useState<User | null>(null)
 
   if (!user) return <p>Non connecté</p>
 
-  return <p>Connecté en tant que : {user.name}</p>
+  return (
+    <p>Connecté en tant que : {user.name}</p>
+  )
 }
