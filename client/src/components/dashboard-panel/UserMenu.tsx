@@ -1,7 +1,7 @@
 "use client"
 
 import { useUser } from "@/src/hooks/useUser"
-import { LogOutIcon, Settings, User } from "lucide-react"
+import { Settings, User } from "lucide-react"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button"
@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
+import SignOut from "./SignOut"
 
 export default function UserMenu() {
   /**
@@ -65,10 +66,7 @@ export default function UserMenu() {
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer">
-          <LogOutIcon size={16} className="mr-1 opacity-60" aria-hidden="true" />
-          <span>Déconnexion</span>
-        </DropdownMenuItem>
+        <SignOut />
       </DropdownMenuContent>
     </DropdownMenu>
   )
