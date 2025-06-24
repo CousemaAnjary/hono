@@ -34,6 +34,7 @@ export const login = async (c: Context) => {
 
     // On stocke le token dans un cookie Http-Only
     setAccessTokenCookie(c, accessToken)
+    // setRefreshTokenCookie(c, refreshToken)
 
     return c.json( { success: true, message: "Connexion réussie", user }, 200 )
      
