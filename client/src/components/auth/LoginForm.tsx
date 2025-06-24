@@ -36,8 +36,8 @@ export default function LoginForm() {
 
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
     login(data, {
-      onSuccess: () => {
-        toast.success("Connexion réussie !")
+      onSuccess: (response) => {
+        toast.success(response.message)
         router.push("/dashboard")
       },
       onError: (error) => {
