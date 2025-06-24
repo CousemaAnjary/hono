@@ -97,12 +97,7 @@ export default function LoginForm() {
             />
           </div>
 
-          <Button
-            type="submit"
-            className="mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Se connecter
-          </Button>
+          <Button type="submit">Se connecter</Button>
         </form>
       </Form>
     </>
