@@ -11,5 +11,6 @@ export const getCurrentUser = async () => {
     throw new Error(errorData.message)
   }
   
-  return await res.json()
+   const data = await res.json()
+  return data.user 
 }
