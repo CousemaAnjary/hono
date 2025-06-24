@@ -1,4 +1,4 @@
-import { set, type z } from "zod"
+import { z } from "zod"
 import { User } from "models"
 import { Context } from "hono"
 import jwt from "jsonwebtoken"
@@ -8,6 +8,7 @@ import { setAccessTokenCookie } from "utils/cookies/accessToken"
 import { createUser, findUserByEmail } from "../repositories/auth.repository"
 import type { loginSchema, registerSchema } from "../validators/auth.validator"
 import { getRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
+
 
 
 export const registerUser = async (data: z.infer<typeof registerSchema>): Promise<User> => {
@@ -29,7 +30,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>): Promis
   return newUser
 }
 
-export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user: User, accessToken: string, refreshToken:string  }> => {
+export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ user: User, accessToken: string  }> => {
   
   // Destructuration des données validées
   const { email, password } = data
@@ -51,10 +52,10 @@ export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ us
 
   // Génération d'un token d'accès et d'un token de rafraîchissement
   const accessToken = generateToken(payload, {expiresIn: "15m"})
-  const refreshToken = generateToken(payload, {expiresIn: "7d"})
+  // const refreshToken = generateToken(payload, {expiresIn: "7d"})
 
   // Retour de l'utilisateur et du token
-  return { user, accessToken, refreshToken }
+  return { user, accessToken }
 }
 
 
