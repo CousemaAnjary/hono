@@ -38,7 +38,7 @@ export default function UserMenu() {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-w-64" align="end">
+      <DropdownMenuContent className="mt-3" align="end">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="text-foreground truncate text-sm font-medium">
             {user?.name}
@@ -67,7 +67,7 @@ export default function UserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem className="hover:cursor-pointer">
           <LogOutIcon size={16} className="mr-1 opacity-60" aria-hidden="true" />
-          <span>Logout</span>
+          <span>Déconnexion</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
