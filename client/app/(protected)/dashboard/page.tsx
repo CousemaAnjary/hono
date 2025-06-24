@@ -1,19 +1,19 @@
-import { getCurrentUser } from "@/src/lib/auth"
+"use client"
 
+import { getCurrentUser } from "@/src/services/user.service"
+import { User } from "@/src/types/auth"
+import { useEffect, useState } from "react"
 
+export default function DashboardPage() {
+  const [user, setUser] = useState<User | null>(null)
 
-export default async function DashboardPage() {
+ useEffect(() => {
+  getCurrentUser().then(setUser).catch(() => setUser(null))
+}, [])
 
-  const user = await getCurrentUser()
+if (!user) {
+  return <p>Chargement...</p>
+}
 
-  return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold">Dashboard</h1>
-      {user ? (
-        <p>Bienvenue, {user.name} !</p>
-      ) : (
-        <p>Utilisateur non authentifié</p>
-      )}
-    </div>
-  )
+  return <p>Connecté en tant que : {user.name}</p>
 }

@@ -18,17 +18,17 @@ export const authFetch = async (url: string, options: RequestInit = {}): Promise
 
   let response = await fetch(fullUrl, finalOptions)
 
-  // // 🔁 Si le token est expiré, on tente un refresh puis on réessaie une seule fois
-  // if (response.status === 401) {
+  // 🔁 Si le token est expiré, on tente un refresh puis on réessaie une seule fois
+  if (response.status === 401) {
 
-  //   try {
-  //     await refreshAccessToken()
-  //     response = await fetch(fullUrl, finalOptions)
+    try {
+      await refreshAccessToken()
+      response = await fetch(fullUrl, finalOptions)
 
-  //   } catch (err) {
-  //     throw new Error("Session expirée. Veuillez vous reconnecter.")
-  //   }
-  // }
+    } catch (err) {
+      throw new Error("Session expirée. Veuillez vous reconnecter.")
+    }
+  }
 
   if (!response.ok) {
     const errorData = await response.json()
