@@ -1,4 +1,4 @@
-// La méthode cookies() de next/headers permet de uniquement de lire le cookie stocké côté client.
+// La méthode cookies() de next/headers permet de uniquement de lire le cookie stocké côté dans le navigateur.
 import { cookies } from "next/headers"
 
 
