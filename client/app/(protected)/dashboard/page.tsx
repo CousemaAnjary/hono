@@ -1,9 +1,9 @@
 "use client"
-
+import { toast } from "sonner"
 import { apiUrl } from "@/src/lib/api"
 import { User } from "@/src/types/auth"
 import { useEffect, useState } from "react"
-import { toast } from "sonner"
+
 
 export default function DashboardPage() {
   // ! STATE (état, données) de l'application
@@ -35,7 +35,7 @@ export default function DashboardPage() {
     fetchUser()
   }, [])
 
-  
+
   // ! AFFICHAGE (affichage, UI) de l'application
   return (
     <>
