@@ -16,9 +16,9 @@ export default function Navbar() {
 
         {/* Left side */}
         <div className="flex items-center gap-6">
-          <Link href="#" className="text-primary hover:text-primary/90 font-semibold ">
+          {/* <Link href="#" className="text-primary hover:text-primary/90 font-semibold ">
             Hono
-          </Link>
+          </Link> */}
 
           {/* <NavigationMenuDesktop /> */}
         </div>
