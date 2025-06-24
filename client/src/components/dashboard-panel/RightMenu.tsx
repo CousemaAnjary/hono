@@ -1,5 +1,7 @@
 "use client"
+
 import UserMenu from "./UserMenu"
+import NotificationMenu from "./NotificationMenu"
 
 export default function RightMenu() {
   // ! STATE (état, données) de l'application
@@ -10,8 +12,8 @@ export default function RightMenu() {
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-2">
-        {/* <InfoMenu />
-        <NotificationMenu /> */}
+        {/* <InfoMenu /> */}
+        <NotificationMenu />
       </div>
       <UserMenu />
     </div>
