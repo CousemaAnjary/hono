@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import RightMenu from "./RightMenu"
 
 export default function Navbar() {
