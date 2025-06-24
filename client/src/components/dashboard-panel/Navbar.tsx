@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import RightMenu from "./RightMenu"
 
 export default function Navbar() {
   // ! STATE (état, données) de l'application
@@ -22,7 +23,7 @@ export default function Navbar() {
         </div>
 
         {/* Right side */}
-        {/* <RightMenu /> */}
+        <RightMenu />
       </div>
     </header>
   )
