@@ -3,11 +3,11 @@
 import { apiUrl } from "@/src/lib/api"
 import { User } from "@/src/types/auth"
 import { useEffect, useState } from "react"
+import { toast } from "sonner"
 
 export default function DashboardPage() {
   // ! STATE (état, données) de l'application
   const [user, setUser] = useState<User | null>(null)
-
 
   // ! ACTIONS (actions, fonctions) de l'application
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function DashboardPage() {
       try {
         const res = await fetch(`${apiUrl}/user/me`, {
           method: "GET",
-          credentials: "include", 
+          credentials: "include",
         })
 
         if (!res.ok) {
@@ -26,14 +26,15 @@ export default function DashboardPage() {
         setUser(data.user)
 
       } catch (error) {
-         console.error("Erreur lors de la récupération de l'utilisateur :", error)
+        if (error instanceof Error) {
+          toast.error(error.message)
+        }
         setUser(null)
       }
     }
     fetchUser()
   }, [])
 
-  
   // ! AFFICHAGE (affichage, UI) de l'application
   return (
     <>
