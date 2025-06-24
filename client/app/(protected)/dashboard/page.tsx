@@ -35,11 +35,13 @@ export default function DashboardPage() {
     fetchUser()
   }, [])
 
+  
   // ! AFFICHAGE (affichage, UI) de l'application
   return (
     <>
       <h1>Dashboard</h1>
       <p>Bienvenue sur votre tableau de bord !</p>
+
       {user ? (
         <div>
           <h2>Bonjour, {user.name} !</h2>
