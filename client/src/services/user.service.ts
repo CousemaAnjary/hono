@@ -1,6 +1,5 @@
 import { apiUrl } from "../lib/api"
 
-
 export const getCurrentUser = async () => {
   const res = await fetch(`${apiUrl}/user/me`, {
     method: "GET",
