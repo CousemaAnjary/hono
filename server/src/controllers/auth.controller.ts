@@ -1,8 +1,7 @@
 import type { Context } from "hono"
-import { loginSchema, registerSchema } from "../validators/auth.validator"
+import { setAccessTokenCookie } from "utils/cookies/accessToken"
 import { loginUser, registerUser } from "../services/auth.service"
-import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
-import { deleteRefreshTokenCookie, setRefreshTokenCookie } from "utils/cookies/refreshToken"
+import { loginSchema, registerSchema } from "../validators/auth.validator"
 
 
 export const register = async (c: Context) => {
