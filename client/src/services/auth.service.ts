@@ -29,5 +29,5 @@ export const logout = async ():Promise<void> => {
     throw new Error(errorData.message)
   }
   
-  return
+  return await res.json()
 }
