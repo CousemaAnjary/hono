@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
   const isPublicRoute = publicRoutes.includes(path)
 
   //
-  const token = getToken()
+  const token = await getToken()
   const isAuthenticated = !!token
 
   // Redirection si l n'est pas authentifié
