@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "../ui/form"
 import { Input } from "../ui/input"
+import { Loader } from "lucide-react"
 
 export default function LoginForm() {
   // ! STATE (état, données) de l'application
@@ -97,7 +98,16 @@ export default function LoginForm() {
             />
           </div>
 
-          <Button type="submit">Se connecter</Button>
+          <Button type="submit" disabled={isPending}>
+            {isPending ? (
+              <>
+                <Loader className="mr-2 size-4 animate-spin" />
+                Veuillez patienter
+              </>
+            ) : (
+              "Se connecter"
+            )}
+          </Button>
         </form>
       </Form>
     </>
