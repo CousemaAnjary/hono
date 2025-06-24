@@ -59,19 +59,19 @@ export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ us
 }
 
 
-export const refreshAccessToken = async (c : Context): Promise<{ success: boolean; message: string }> => {
+// export const refreshAccessToken = async (c : Context): Promise<{ success: boolean; message: string }> => {
 
-  const token = getRefreshTokenCookie(c)
-  if (!token) throw new Error("Token de rafraîchissement manquant")
+//   const token = getRefreshTokenCookie(c)
+//   if (!token) throw new Error("Token de rafraîchissement manquant")
 
-  const payload = verifyToken(token)
+//   const payload = verifyToken(token)
   
-  const newAccessToken = generateToken(payload, {expiresIn: "15m"})
-  const newRefreshToken = generateToken(payload, {expiresIn: "7d"})
+//   const newAccessToken = generateToken(payload, {expiresIn: "15m"})
+//   const newRefreshToken = generateToken(payload, {expiresIn: "7d"})
 
-  setAccessTokenCookie(c, newAccessToken)
-  setRefreshTokenCookie(c, newRefreshToken)
+//   setAccessTokenCookie(c, newAccessToken)
+//   setRefreshTokenCookie(c, newRefreshToken)
 
-  return { success: true, message: "Token renouvelé avec succès" }
+//   return { success: true, message: "Token renouvelé avec succès" }
   
-}
+// }
