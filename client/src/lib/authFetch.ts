@@ -1,9 +1,6 @@
 import { apiUrl } from "./api"
 
-export const authFetch = async <T = unknown>(
-  url: string,
-  options: RequestInit = {}
-): Promise<T> => {
+export const authFetch = async <T = unknown>(url: string, options: RequestInit = {}): Promise<T> => {
   const res = await fetch(`${apiUrl}${url}`, {
     credentials: "include",
     headers: {
@@ -13,5 +10,5 @@ export const authFetch = async <T = unknown>(
     ...options,
   })
   if (!res.ok) throw new Error((await res.json()).message)
-  return (await res.json()) as T
+  return await res.json() as T
 }
