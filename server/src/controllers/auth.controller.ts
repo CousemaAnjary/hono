@@ -8,7 +8,7 @@ export const register = async (c: Context) => {
 
   // validate des données d'entrée (body)
   const validated = registerSchema.safeParse(await c.req.json())
-  if (!validated.success)return c.json({success: false, message: "Validation échouée", errors: validated.error.flatten().fieldErrors,},400)
+  if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
     
   try {
     const newUser = await registerUser(validated.data)
@@ -31,11 +31,8 @@ export const login = async (c: Context) => {
 
   try {
     const { user, accessToken } = await loginUser(validated.data)
-
-    // On stocke le token dans un cookie Http-Only
     setAccessTokenCookie(c, accessToken)
     // setRefreshTokenCookie(c, refreshToken)
-
     return c.json( { success: true, message: "Connexion réussie", user }, 200 )
      
   } catch (error) {
