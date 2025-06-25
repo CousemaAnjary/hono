@@ -14,7 +14,7 @@
     // ! ACTIONS (actions, fonctions) de l'application
     const handleSignOut = async () => {
       logout()
-      router.push("/auth/login")
+      router.push("/login")
     }
 
 
