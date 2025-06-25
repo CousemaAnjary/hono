@@ -1,8 +1,4 @@
-export type getCurrentUserResponse = {
-  user: User
-  success: boolean
-  message: string
-}
+
 
 export type User = {
   id: number

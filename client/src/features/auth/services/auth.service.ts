@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { authFetch } from "@/src/lib/authFetch"
-import { LoginResponse } from "@/src/types/auth"
-import { getCurrentUserResponse } from "@/src/types/user"
+import { GetCurrentUserResponse, LoginResponse } from "@/src/types/auth"
+
 import { loginSchema } from "@/src/validators/auth.validator"
 
 
@@ -15,8 +15,8 @@ export const login = async (data: z.infer<typeof loginSchema>) => {
 
 // Récupère l'utilisateur connecté
 export const getCurrentUser = async () => {
-  const res = await authFetch<getCurrentUserResponse>("/user/me")
-  return res.user
+  const res = await authFetch<GetCurrentUserResponse>("/user/me")
+  return res.currentUser
 }
 
 // Fonction pour se déconnecter

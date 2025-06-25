@@ -1,23 +1,21 @@
 "use client"
 
-import { logout } from "@/src/services/auth.service"
+import { useLogout } from "@/src/features/auth/hooks/useLogout"
 import { LogOutIcon } from "lucide-react"
-import { DropdownMenuItem } from "../ui/dropdown-menu"
 import { useRouter } from "next/navigation"
+import { DropdownMenuItem } from "../ui/dropdown-menu"
 
 export default function SignOut() {
   // ! STATE (état, données) de l'application
   const router = useRouter()
+  const { mutate: logout } = useLogout()
+
 
   // ! ACTIONS (actions, fonctions) de l'application
   const handleSignOut = async () => {
-    try {
-      await logout()
-      router.push("/login")
-    } catch (error) {
-      console.error("Erreur lors de la déconnexion :", error)
-    }
+    logout()
   }
+
 
   // ! AFFICHAGE (affichage, UI) de l'application
   return (

@@ -1,4 +1,5 @@
-import LoginForm from "@/src/components/auth/LoginForm"
+import LoginForm from "@/src/features/auth/components/LoginForm";
+
 
 export default function LoginPage() {
   // ! STATE (état, données) de l'application

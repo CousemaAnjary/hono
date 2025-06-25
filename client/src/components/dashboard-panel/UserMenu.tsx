@@ -1,6 +1,4 @@
 "use client"
-
-import { useUser } from "@/src/hooks/useUser"
 import { Settings, User } from "lucide-react"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
@@ -15,12 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
 import SignOut from "./SignOut"
+import { useCurrentUser } from "@/src/features/auth/queries/useCurrentUser"
 
 export default function UserMenu() {
   /**
    * ! STATE (état, données) de l'application
    */
-  const { data: user } = useUser()
+  const { data: currentUser } = useCurrentUser()
 
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
@@ -42,10 +41,10 @@ export default function UserMenu() {
       <DropdownMenuContent className="mt-3" align="end">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="text-foreground truncate text-sm font-medium">
-            {user?.name}
+            {currentUser?.name}
           </span>
           <span className="text-muted-foreground truncate text-xs font-normal">
-            {user?.email}
+            {currentUser?.email}
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
