@@ -4,9 +4,7 @@ import { getCurrentUser } from "../services/user.service"
 
 export const useUser = () => {
   return useQuery({
-    queryKey:["user"],
+    queryKey: ["user"],
     queryFn: getCurrentUser,
-    retry: false, // ne pas réessayer en cas d'erreur
-    refetchOnWindowFocus: false, // évite les appels inutiles en revenant sur la page
   })
 }
