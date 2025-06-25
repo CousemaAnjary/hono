@@ -15,7 +15,7 @@
     const handleSignOut = async () => {
       logout(undefined, {
         onSuccess: () => {
-          router.push("/auth/login")
+          router.push("/login")
         },
         onError: (error) => {
           console.error("Erreur lors de la déconnexion :", error)
