@@ -6,7 +6,7 @@ export const useUser = () => {
   return useQuery({
     queryKey:["user"],
     queryFn: getCurrentUser,
-    retry: false,
-    refetchOnWindowFocus: false,
+    retry: false, // ne pas réessayer en cas d'erreur
+    refetchOnWindowFocus: false, // évite les appels inutiles en revenant sur la page
   })
 }
