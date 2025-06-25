@@ -7,7 +7,6 @@ export const getCurrentUser = async (c: Context) => {
     return c.json({ success: true, message: "Utilisateur récupéré avec succès", user }, 200)
 
   } catch (error) {
-
     if (error instanceof Error) {
       return c.json({ success: false, message: error.message }, 409)
     }
