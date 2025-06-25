@@ -5,18 +5,14 @@ import { loginSchema } from "../validators/auth.validator"
 
 
 export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResponse> => {
-  const res = await fetch(`${apiUrl}/auth/login`, {
+  const response = await fetch(`${apiUrl}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: JSON.stringify(data),
   })
-  if (!res.ok) {
-    const errorData = await res.json()
-    throw new Error(errorData.message)
-  }
-  
-  return await res.json()
+  if (!response.ok) throw new Error((await response.json()).message)
+  return await response.json() as LoginResponse
 }
 
 export const logout = async ():Promise<void> => {
