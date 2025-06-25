@@ -15,6 +15,7 @@ export const login = async (data: z.infer<typeof loginSchema>):Promise<LoginResp
   return await response.json() as LoginResponse
 }
 
+
 export const logout = async ():Promise<void> => {
   const res = await fetch(`${apiUrl}/auth/logout`, {
     method: "POST",
