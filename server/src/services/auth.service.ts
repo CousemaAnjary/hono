@@ -46,7 +46,7 @@ export const loginUser = async (data: z.infer<typeof loginSchema>):  Promise<{ a
   }
 
   // Génération d'un token d'accès et d'un token de rafraîchissement
-  const accessToken = generateToken(payload, {expiresIn: "10s"})
+  const accessToken = generateToken(payload, {expiresIn: "15m"})
 
   // Retour de l'utilisateur et du token
   return { accessToken }
