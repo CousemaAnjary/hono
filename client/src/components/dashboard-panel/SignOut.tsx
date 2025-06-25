@@ -13,8 +13,14 @@
 
     // ! ACTIONS (actions, fonctions) de l'application
     const handleSignOut = async () => {
-      logout()
-      router.push("/login")
+      logout(undefined, {
+        onSuccess: () => {
+          router.push("/auth/login")
+        },
+        onError: (error) => {
+          console.error("Erreur lors de la déconnexion :", error)
+        },
+      })
     }
 
 

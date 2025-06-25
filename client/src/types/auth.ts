@@ -14,3 +14,8 @@ export type CurrentUser = {
   name: string
   email: string
 }
+
+export type LogoutResponse = {
+  success: boolean
+  message: string
+}

@@ -1,8 +1,7 @@
 import { z } from "zod"
 import { authFetch } from "@/src/lib/authFetch"
-import { GetCurrentUserResponse, LoginResponse } from "@/src/types/auth"
-
 import { loginSchema } from "@/src/validators/auth.validator"
+import { GetCurrentUserResponse, LoginResponse, LogoutResponse } from "@/src/types/auth"
 
 
 // Fonction pour se connecter
@@ -21,7 +20,7 @@ export const getCurrentUser = async () => {
 
 // Fonction pour se déconnecter
 export const logout = async () => {
-  await authFetch("/auth/logout", {
+  return await authFetch<LogoutResponse>("/auth/logout", {
     method: "POST",
   })
 }
