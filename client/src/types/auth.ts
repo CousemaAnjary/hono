@@ -6,7 +6,6 @@ export type User = {
 }
 
 export type LoginResponse = {
-  user: User
   success: boolean
   message: string
 }
