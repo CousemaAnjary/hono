@@ -30,10 +30,10 @@ export const login = async (c: Context) => {
   if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
-    const { user, accessToken } = await loginUser(validated.data)
+    const { accessToken } = await loginUser(validated.data)
     setAccessTokenCookie(c, accessToken)
     // setRefreshTokenCookie(c, refreshToken)
-    return c.json( { success: true, message: "Connexion réussie", user }, 200 )
+    return c.json( { success: true, message: "Connexion réussie" }, 200 )
      
   } catch (error) {
     if (error instanceof Error) {
