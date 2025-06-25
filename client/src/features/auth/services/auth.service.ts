@@ -1,30 +1,27 @@
+import { authFetch } from "@/src/lib/authFetch"
+import { LoginResponse } from "@/src/types/auth"
+import { getCurrentUserResponse } from "@/src/types/user"
+import { loginSchema } from "@/src/validators/auth.validator"
 import { z } from "zod"
-import { apiUrl } from "../../../lib/api"
-import { LoginResponse } from "../types/auth"
-import { loginSchema } from "../validators/auth.validator"
 
-export const login = async (
-  data: z.infer<typeof loginSchema>
-): Promise<LoginResponse> => {
-  const response = await fetch(`${apiUrl}/auth/login`, {
+// Fonction pour se connecter
+export const login = async (data: z.infer<typeof loginSchema>) => {
+  await authFetch<LoginResponse>("/auth/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify(data),
   })
-  if (!response.ok) throw new Error((await response.json()).message)
-  return (await response.json()) as LoginResponse
 }
 
-export const logout = async (): Promise<void> => {
-  const res = await fetch(`${apiUrl}/auth/logout`, {
+// Récupère l'utilisateur connecté
+export const getCurrentUser = async () => {
+  const res = await authFetch<getCurrentUserResponse>("/user/me")
+  return res.user
+}
+
+// Fonction pour se déconnecter
+export const logout = async () => {
+   await authFetch("/auth/login", {
     method: "POST",
-    credentials: "include",
   })
-  if (!res.ok) {
-    const errorData = await res.json()
-    throw new Error(errorData.message)
-  }
-
-  return await res.json()
 }
+
