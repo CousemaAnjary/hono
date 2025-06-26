@@ -1,8 +1,8 @@
 "use client"
-import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu"
 import { LogOutIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useLogout } from "../hooks/useLogout"
+import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu"
 
 
 export default function SignOutButton() {
