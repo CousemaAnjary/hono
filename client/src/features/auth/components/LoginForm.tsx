@@ -2,6 +2,7 @@
 
 import { loginSchema } from "@/src/validators/auth.validator"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -16,7 +17,6 @@ import {
   FormMessage,
 } from "../../../components/ui/form"
 import { Input } from "../../../components/ui/input"
-import { Loader } from "lucide-react"
 import { useLogin } from "../hooks/useLogin"
 
 
@@ -42,9 +42,7 @@ export default function LoginForm() {
         toast.success(response.message)
         router.push("/dashboard")
       },
-      onError: (error) => {
-        toast.error(error.message)
-      },
+      onError: (error) => { toast.error(error.message) },
     })
   }
 
