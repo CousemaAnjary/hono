@@ -56,13 +56,13 @@ export default function UserMenu() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="/profile" className="flex items-center font-inter">
-              <User className="mr-1 size-4 text-muted-foreground" />
+            <Link href="/profile" className="flex items-center font-spaceGrotesk">
+              <User className="mr-1 size-4 text-muted-foreground " />
               Profile
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="#" className="flex items-center font-inter">
+            <Link href="#" className="flex items-center font-spaceGrotesk">
               <Settings className="mr-1 size-4 text-muted-foreground" />
               Paramètres
             </Link>
