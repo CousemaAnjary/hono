@@ -23,7 +23,7 @@ export async function middleware(request: NextRequest) {
 
   // Redirection si l'utilisateur est authentifié 
   if (isPublicRoute && isAuthenticated) {
-    return NextResponse.redirect(new URL("/dashboard", request.nextUrl))
+    return NextResponse.redirect(new URL("/profile", request.nextUrl))
   }
 
   // Si aucune condition n'est remplie, on continue la requête

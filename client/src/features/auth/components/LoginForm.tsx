@@ -40,7 +40,7 @@ export default function LoginForm() {
     login(data, {
       onSuccess: (response) => {
         toast.success(response.message)
-        router.push("/dashboard")
+        router.push("/profile")
       },
       onError: (error) => { toast.error(error.message) },
     })
