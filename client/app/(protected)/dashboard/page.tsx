@@ -186,7 +186,7 @@ export default function page() {
         </div>
 
         {/* Mangas populaires */}
-        <div className="space-y-6">
+       
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
               <Star className="h-5 w-5 text-yellow-600" />
@@ -266,7 +266,7 @@ export default function page() {
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
     </>
   )
