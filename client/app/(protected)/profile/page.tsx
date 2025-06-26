@@ -1,4 +1,4 @@
-export default function ProfilePage() {
+export default async function ProfilePage() {
   /**
    * ! STATE (état, données) de l'application
    */
