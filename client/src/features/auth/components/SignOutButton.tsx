@@ -41,11 +41,11 @@ export default function SignOutButton() {
       {isHovered ? (
         <BsEmojiTear
           size={18}
-          className="mr-1  text-pink-500"
+          className="mr-1  text-pink-700"
           aria-hidden="true"
         />
       ) : (
-        <LogOut size={18} className="mr-1  text-pink-500" aria-hidden="true" />
+        <LogOut size={18} className="mr-1  text-pink-700" aria-hidden="true" />
       )}
       <span>Déconnexion</span>
     </DropdownMenuItem>
