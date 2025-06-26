@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 
+
 export default function page() {
   /**
    * ! STATE (état, données) de l'application
