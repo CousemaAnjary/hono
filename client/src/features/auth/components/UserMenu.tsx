@@ -37,8 +37,8 @@ export default function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
-          <Avatar>
-            <AvatarImage src="#" alt="Profile image" />
+          <Avatar className="rounded-lg">
+            <AvatarImage src="https://github.com/evilrabbit.png" alt="Profile image" />
             <AvatarFallback>AC</AvatarFallback>
           </Avatar>
         </Button>
