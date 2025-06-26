@@ -1,3 +1,7 @@
+import man1 from "@/public/images/man1.jpg"
+import man2 from "@/public/images/man2.jpg"
+import man3 from "@/public/images/man3.jpg"
+import man4 from "@/public/images/man4.jpg"
 import {
   BookOpen,
   CalendarDays,
@@ -197,78 +201,31 @@ export default function page() {
             </h2>
           </div>
 
-          <div className="bg-white p-4 grid grid-cols-2 gap-3">
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg mb-2">
-                <Image
-                  src="/api/placeholder/120/160"
-                  alt="One Piece"
-                  width={120}
-                  height={160}
-                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                  4.9
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { src: man1, title: "Spy × Family", rating: "4.9" },
+              { src: man2, title: "Dandadan", rating: "4.8" },
+              { src: man3, title: "Boruto: Next Generations", rating: "4.7" },
+              { src: man4, title: "My Hero Academia", rating: "4.8" },
+            ].map((manga, index) => (
+              <div key={index} className="group cursor-pointer">
+                <div className="relative mb-1 overflow-hidden rounded-lg aspect-[3/4]">
+                  <Image
+                    src={manga.src}
+                    alt={manga.title}
+                    title={manga.title}
+                    fill
+                    className="object-cover transition-transform duration-200 group-hover:scale-105"
+                  />
+                  <div className="absolute top-1 right-1 rounded bg-pink-600 px-1 py-0.5 text-xs font-spaceGrotesk font-medium text-white shadow">
+                    {manga.rating}
+                  </div>
                 </div>
+                <h3 className="truncate text-sm font-medium text-gray-800 font-spaceGrotesk">
+                  {manga.title}
+                </h3>
               </div>
-              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                One Piece
-              </h3>
-            </div>
-
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg mb-2">
-                <Image
-                  src="/api/placeholder/120/160"
-                  alt="Attack on Titan"
-                  width={120}
-                  height={160}
-                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                  4.8
-                </div>
-              </div>
-              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                Attack on Titan
-              </h3>
-            </div>
-
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg mb-2">
-                <Image
-                  src="/api/placeholder/120/160"
-                  alt="Demon Slayer"
-                  width={120}
-                  height={160}
-                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                  4.7
-                </div>
-              </div>
-              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                Demon Slayer
-              </h3>
-            </div>
-
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg mb-2">
-                <Image
-                  src="/api/placeholder/120/160"
-                  alt="Jujutsu Kaisen"
-                  width={120}
-                  height={160}
-                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                  4.8
-                </div>
-              </div>
-              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                Jujutsu Kaisen
-              </h3>
-            </div>
+            ))}
           </div>
         </div>
       </div>
