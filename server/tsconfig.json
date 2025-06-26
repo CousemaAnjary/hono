@@ -18,7 +18,8 @@
     /* Completeness */
 
     "skipLibCheck": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "types": ["node"]
   },
 
   "include": ["src/**/*", "src/validators"]
