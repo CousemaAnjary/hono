@@ -13,7 +13,7 @@ import {
 import Image from "next/image"
 
 
-export default function page() {
+export default function DashboardPage() {
   /**
    * ! STATE (état, données) de l'application
    */
