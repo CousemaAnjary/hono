@@ -143,7 +143,7 @@ export default function DashboardPage() {
             </h2>
           </div>
 
-          <div className="space-y-4 bg-white p-4 rounded-lg border">
+          {/* <div className="space-y-4 bg-white p-4 rounded-lg border">
             <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
               <div className="w-12 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded flex items-center justify-center">
                 <BookOpen className="h-6 w-6 text-white" />
@@ -189,7 +189,7 @@ export default function DashboardPage() {
                 En cours
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Mangas populaires */}
