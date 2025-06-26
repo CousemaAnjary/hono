@@ -6,7 +6,7 @@ import { getCurrentUser } from "../services/auth.service"
 export const useCurrentUser = () => {
   
   return useQuery({
-    queryKey: ["currentUser"],
+    queryKey: ["userPayload"],
     queryFn: getCurrentUser,
   })
 }

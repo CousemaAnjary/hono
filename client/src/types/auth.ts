@@ -4,12 +4,12 @@ export type LoginResponse = {
 }
 
 export type GetCurrentUserResponse = {
-  currentUser: CurrentUser
+  userPayload: UserPayload
   success: boolean
   message: string
 }
 
-export type CurrentUser = {
+export type UserPayload = {
   id: number
   name: string
   email: string

@@ -19,7 +19,7 @@ export default function UserMenu() {
   /**
    * ! STATE (état, données) de l'application
    */
-  const { data: currentUser } = useCurrentUser()
+  const { data: userPayload } = useCurrentUser()
 
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
@@ -41,10 +41,10 @@ export default function UserMenu() {
       <DropdownMenuContent className="mt-3" align="end">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="text-foreground truncate text-sm font-medium">
-            {currentUser?.name}
+            {userPayload?.name}
           </span>
           <span className="text-muted-foreground truncate text-xs font-normal">
-            {currentUser?.email}
+            {userPayload?.email}
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
