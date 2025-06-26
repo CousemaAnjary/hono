@@ -1,5 +1,6 @@
 "use client"
 
+import { Bookmark, Calendar, Heart, Home } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import RightMenu from "./RightMenu"
@@ -11,10 +12,10 @@ export default function Navbar() {
   const pathname = usePathname()
 
   const navigationLinks = [
-    { href: "/dashboard", label: "Accueil" },
-    { href: "/collections", label: "Collections" },
-    { href: "/planning", label: "Planning de lecture" },
-    { href: "/favoris", label: "Favoris" },
+    { href: "/dashboard", label: "Accueil", icon: Home },
+    { href: "/collections", label: "Collections", icon: Bookmark },
+    { href: "/planning", label: "Planning de lecture", icon: Calendar },
+    { href: "/favoris", label: "Favoris", icon: Heart },
   ]
 
   /**
@@ -39,16 +40,18 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-4 text-sm font-medium">
             {navigationLinks.map((link) => {
               const isActive = pathname === link.href
+              const IconComponent = link.icon
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`transition-colors px-3 py-2 rounded-md font-spaceGrotesk ${
+                    className={`transition-colors px-3 py-2 rounded-md font-spaceGrotesk flex items-center gap-2 ${
                       isActive
                         ? "bg-gray-100 text-primary font-semibold"
                         : " hover:text-primary"
                     }`}
                   >
+                    <IconComponent size={16} />
                     {link.label}
                   </Link>
                 </li>
