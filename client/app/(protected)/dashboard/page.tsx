@@ -1,6 +1,7 @@
 import {
   BookOpen,
   Calendar,
+  CalendarDays,
   Clock,
   Heart,
   Star,
@@ -22,18 +23,21 @@ export default function page() {
   return (
     <>
       {/* Header */}
-      <div className="mb-8 flex w-full items-center justify-between rounded-lg bg-white p-6 shadow-sm border">
+      <div className="mb-8 flex w-full items-center justify-between rounded-lg bg-white p-4 px-6 shadow-sm border">
         <div>
-          <h1 className="font-spaceGrotesk text-2xl font-bold text-gray-800">
+          <h1 className="font-spaceGrotesk text-xl font-medium text-gray-800">
             Tableau de bord
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-gray-600 mt-1 text-sm font-spaceGrotesk">
             Vue d&apos;ensemble de vos activités et tendances.
           </p>
         </div>
-        <div className="text-right">
-          <p className="text-sm text-gray-500">Aujourd&apos;hui</p>
-          <p className="font-semibold text-gray-800">
+        <div className="text-right flex flex-col items-end gap-1">
+          <div className="flex items-center gap-1 text-sm text-muted-foreground font-spaceGrotesk">
+            <CalendarDays className="h-4 w-4" />
+            <span>Aujourd&apos;hui</span>
+          </div>
+          <p className="font-semibold text-gray-800 font-spaceGrotesk">
             {new Date().toLocaleDateString("fr-FR", {
               weekday: "long",
               year: "numeric",
@@ -43,7 +47,6 @@ export default function page() {
           </p>
         </div>
       </div>
-      
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
