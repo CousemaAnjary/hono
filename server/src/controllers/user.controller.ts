@@ -1,11 +1,11 @@
 import { Context } from "hono"
-import { userCurrent } from "services/user.service"
+import { currentUser } from "services/user.service"
 
 
 export const getCurrentUser = async (c: Context) => {
   try {
-    const currentUser = await userCurrent(c)
-    return c.json({ success: true, message: "Utilisateur récupéré avec succès", currentUser }, 200)
+    const userPayload = await currentUser(c)
+    return c.json({ success: true, message: "Utilisateur récupéré avec succès", userPayload }, 200)
 
   } catch (error) {
     if (error instanceof Error) {
