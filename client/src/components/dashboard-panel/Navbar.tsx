@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const navigationLinks = [
     { href: "/dashboard", label: "Accueil", icon: Home },
-    { href: "/collections", label: "Collections", icon: Bookmark },
+    { href: "/mangas", label: "Mangas", icon: Bookmark },
     { href: "/planning", label: "Planning de lecture", icon: Calendar },
     { href: "/favoris", label: "Favoris", icon: Heart },
   ]
