@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core"
+import { boolean, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core"
 
 // Define the enum type separately
 export const typeEnum = pgEnum("type", ["manga", "manhwa", "manhua"])
@@ -13,6 +13,9 @@ export const mangas = pgTable("mangas", {
   coverUrl: text("cover_url").notNull(),
   type: typeEnum("type").notNull(),
   status: statusEnum("status").notNull(),
+  isFeatured: boolean("is_featured").default(false),
+  isRecommended: boolean("is_recommended").default(false),
+  isPopular: boolean("is_popular").default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 })
