@@ -13,7 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
-import SignOut from "./SignOut"
+import SignOutButton from "@/src/features/auth/components/SignOutButton"
+
 
 export default function UserMenu() {
   /**
@@ -65,7 +66,7 @@ export default function UserMenu() {
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
-        <SignOut />
+        <SignOutButton />
       </DropdownMenuContent>
     </DropdownMenu>
   )
