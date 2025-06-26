@@ -1,5 +1,6 @@
-import { getToken } from "../client-test/src/utils/cookie"
+import { getToken } from "./src/utils/cookie"
 import { NextRequest, NextResponse } from "next/server"
+
 
 
 const protectedRoutes = ["/dashboard"]
