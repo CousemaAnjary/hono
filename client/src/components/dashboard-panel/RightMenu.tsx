@@ -1,6 +1,6 @@
 "use client"
 
-import UserMenu from "./UserMenu"
+import UserMenu from "../../features/auth/components/UserMenu"
 import NotificationMenu from "./NotificationMenu"
 
 export default function RightMenu() {

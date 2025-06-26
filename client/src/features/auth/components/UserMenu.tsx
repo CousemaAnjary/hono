@@ -1,9 +1,14 @@
 "use client"
+import SignOutButton from "@/src/features/auth/components/SignOutButton"
 import { useCurrentUser } from "@/src/features/auth/queries/useCurrentUser"
 import { Settings, User } from "lucide-react"
 import Link from "next/link"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Button } from "../ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../../components/ui/avatar"
+import { Button } from "../../../components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,9 +17,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
-import SignOutButton from "@/src/features/auth/components/SignOutButton"
-
+} from "../../../components/ui/dropdown-menu"
 
 export default function UserMenu() {
   /**
