@@ -54,53 +54,77 @@ export default function page() {
         <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium font-spaceGrotesk text-gray-700">Mangas lus</p>
-              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">24</p>
+              <p className="text-sm font-medium font-spaceGrotesk text-gray-700">
+                Mangas lus
+              </p>
+              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">
+                24
+              </p>
             </div>
             <div className="p-3 bg-pink-50 rounded-full">
               <BookOpen className="h-6 w-6 text-pink-600" />
             </div>
           </div>
-          <p className="text-xs text-green-600 font-spaceGrotesk mt-2">+3 ce mois-ci</p>
+          <p className="text-xs text-green-600 font-spaceGrotesk mt-2">
+            +3 ce mois-ci
+          </p>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium font-spaceGrotesk text-gray-700">Favoris</p>
-              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">12</p>
+              <p className="text-sm font-medium font-spaceGrotesk text-gray-700">
+                Favoris
+              </p>
+              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">
+                12
+              </p>
             </div>
             <div className="p-3 bg-red-50 rounded-full">
               <Heart className="h-6 w-6 text-red-600" />
             </div>
           </div>
-          <p className="text-xs text-blue-600 mt-2 font-spaceGrotesk">2 ajoutés récemment</p>
+          <p className="text-xs text-blue-600 mt-2 font-spaceGrotesk">
+            2 ajoutés récemment
+          </p>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium font-spaceGrotesk text-gray-600">En cours</p>
-              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">8</p>
+              <p className="text-sm font-medium font-spaceGrotesk text-gray-600">
+                En cours
+              </p>
+              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">
+                8
+              </p>
             </div>
             <div className="p-3 bg-blue-50 rounded-full">
               <Clock className="h-6 w-6 text-blue-600" />
             </div>
           </div>
-          <p className="text-xs text-orange-600 font-spaceGrotesk mt-2">4 à terminer</p>
+          <p className="text-xs text-orange-600 font-spaceGrotesk mt-2">
+            4 à terminer
+          </p>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium font-spaceGrotesk text-gray-600">Note moyenne</p>
-              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">4.2</p>
+              <p className="text-sm font-medium font-spaceGrotesk text-gray-600">
+                Note moyenne
+              </p>
+              <p className="text-2xl font-bold font-spaceGrotesk text-gray-900">
+                4.2
+              </p>
             </div>
             <div className="p-3 bg-yellow-50 rounded-full">
               <Star className="h-6 w-6 text-yellow-600" />
             </div>
           </div>
-          <p className="text-xs text-gray-600 font-spaceGrotesk mt-2">Sur 5 étoiles</p>
+          <p className="text-xs text-gray-600 font-spaceGrotesk mt-2">
+            Sur 5 étoiles
+          </p>
         </div>
       </div>
 
@@ -161,9 +185,8 @@ export default function page() {
           </div>
         </div>
 
-        {/* Planning et raccourcis */}
+        {/* Mangas populaires */}
         <div className="space-y-6">
-          {/* Mangas populaires */}
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
               <Star className="h-5 w-5 text-yellow-600" />
