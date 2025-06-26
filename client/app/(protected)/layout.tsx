@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
       <main className="flex-1 py-8 sm:px-8">
-        <div className="mx-auto max-w-7xl px-6">{children}</div>
+        <div className="mx-auto max-w-[83rem] px-6">{children}</div>
       </main>
     </div>
   );
