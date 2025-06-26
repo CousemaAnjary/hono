@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu"
 
+
 export default function UserMenu() {
   /**
    * ! STATE (état, données) de l'application
