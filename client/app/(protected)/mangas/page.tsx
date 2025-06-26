@@ -77,8 +77,6 @@ export default function MangasPage() {
    */
   return (
     <>
-      {/* Header avec recherche */}
-
       {/* Carrousel des mangas à la une */}
       <div className="mb-8 bg-white rounded-lg shadow-sm border overflow-hidden">
         <div className="p-6 pb-4">
