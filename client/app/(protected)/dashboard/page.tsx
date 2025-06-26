@@ -1,12 +1,13 @@
 import {
   BookOpen,
-  Calendar,
   CalendarDays,
   Clock,
   Heart,
   Star,
   TrendingUp,
 } from "lucide-react"
+import Image from "next/image"
+
 
 export default function page() {
   /**
@@ -162,73 +163,84 @@ export default function page() {
 
         {/* Planning et raccourcis */}
         <div className="space-y-6">
-          {/* Planning du jour */}
+          {/* Mangas populaires */}
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-pink-600" />
-              Planning du jour
-            </h2>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">
-                    Naruto - Chapitre 700
-                  </p>
-                  <p className="text-xs text-gray-600">Prévu pour 14:00</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">
-                    My Hero Academia - Tome 37
-                  </p>
-                  <p className="text-xs text-gray-600">Prévu pour 18:30</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">
-                    Dragon Ball Super - Chapitre 98
-                  </p>
-                  <p className="text-xs text-gray-600">Prévu pour 20:00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Raccourcis rapides */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">
-              Raccourcis rapides
+              <Star className="h-5 w-5 text-yellow-600" />
+              Mangas populaires
             </h2>
             <div className="grid grid-cols-2 gap-3">
-              <button className="p-3 bg-pink-50 hover:bg-pink-100 rounded-lg transition-colors text-center">
-                <BookOpen className="h-6 w-6 text-pink-600 mx-auto mb-2" />
-                <span className="text-sm font-medium text-gray-700">
-                  Nouveau manga
-                </span>
-              </button>
-              <button className="p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-center">
-                <Calendar className="h-6 w-6 text-blue-600 mx-auto mb-2" />
-                <span className="text-sm font-medium text-gray-700">
-                  Planning
-                </span>
-              </button>
-              <button className="p-3 bg-red-50 hover:bg-red-100 rounded-lg transition-colors text-center">
-                <Heart className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                <span className="text-sm font-medium text-gray-700">
-                  Mes favoris
-                </span>
-              </button>
-              <button className="p-3 bg-yellow-50 hover:bg-yellow-100 rounded-lg transition-colors text-center">
-                <Star className="h-6 w-6 text-yellow-600 mx-auto mb-2" />
-                <span className="text-sm font-medium text-gray-700">
-                  Top mangas
-                </span>
-              </button>
+              <div className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-lg mb-2">
+                  <Image
+                    src="/api/placeholder/120/160"
+                    alt="One Piece"
+                    width={120}
+                    height={160}
+                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                    4.9
+                  </div>
+                </div>
+                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                  One Piece
+                </h3>
+              </div>
+
+              <div className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-lg mb-2">
+                  <Image
+                    src="/api/placeholder/120/160"
+                    alt="Attack on Titan"
+                    width={120}
+                    height={160}
+                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                    4.8
+                  </div>
+                </div>
+                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                  Attack on Titan
+                </h3>
+              </div>
+
+              <div className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-lg mb-2">
+                  <Image
+                    src="/api/placeholder/120/160"
+                    alt="Demon Slayer"
+                    width={120}
+                    height={160}
+                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                    4.7
+                  </div>
+                </div>
+                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                  Demon Slayer
+                </h3>
+              </div>
+
+              <div className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-lg mb-2">
+                  <Image
+                    src="/api/placeholder/120/160"
+                    alt="Jujutsu Kaisen"
+                    width={120}
+                    height={160}
+                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                    4.8
+                  </div>
+                </div>
+                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                  Jujutsu Kaisen
+                </h3>
+              </div>
             </div>
           </div>
         </div>
