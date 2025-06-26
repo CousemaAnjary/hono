@@ -1,12 +1,22 @@
 "use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import RightMenu from "./RightMenu"
 
 export default function Navbar() {
   /**
    * ! STATE (état, données) de l'application
    */
-  const navigationLinks = [{ href: "/dashboard", label: "Dashboard" }]
+  const pathname = usePathname()
+
+  const navigationLinks = [
+    { href: "/dashboard", label: "Accueil" },
+    { href: "/collections", label: "Collections" },
+    { href: "/planning", label: "Planning de lecture" },
+    { href: "/favoris", label: "Favoris" },
+  ]
+
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
@@ -15,24 +25,35 @@ export default function Navbar() {
    * ! AFFICHAGE (render) de l'application
    */
   return (
-    <header className="border-b px-4 md:px-14">
-      <div className="flex h-16 items-center justify-between gap-4">
+    <header className="relative z-10 mx-auto mt-4 w-full max-w-7xl rounded-full border bg-white px-6 py-1  dark:bg-zinc-950 max-md:mt-0 max-md:rounded-none">
+      <div className="flex h-12 items-center justify-between">
         {/* Left side */}
-        <nav className="flex items-center gap-8">
+        <nav className="flex items-center gap-10">
           <Link
-            href="#"
-            className="text-xl font-bold  font-mansalva"
+            href="/"
+            className="text-2xl font-bold font-mansalva text-primary"
           >
-            Hono-API
+            Otaku<span className="text-pink-500">Hub</span>
           </Link>
-          <ul className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-            {navigationLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="hover:text-primary">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+
+          <ul className="hidden md:flex items-center gap-4 text-sm font-medium">
+            {navigationLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`transition-colors px-3 py-2 rounded-md font-spaceGrotesk ${
+                      isActive
+                        ? "bg-gray-100 text-primary font-semibold"
+                        : " hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </nav>
 
