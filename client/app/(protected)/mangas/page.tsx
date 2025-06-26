@@ -1,8 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import {
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Eye,
+  Flame,
+  Heart,
+  Plus,
+  Search,
+  Star,
+} from "lucide-react"
 import Image from "next/image"
-import { Search, Plus, Star, Heart, Eye, ChevronLeft, ChevronRight, Flame, Clock, BookOpen } from "lucide-react"
+import { useState } from "react"
 
 export default function MangasPage() {
   /**
@@ -21,7 +32,7 @@ export default function MangasPage() {
       image: "/api/placeholder/300/400",
       rating: 4.9,
       status: "En cours",
-      description: "L'aventure épique de Monkey D. Luffy continue..."
+      description: "L'aventure épique de Monkey D. Luffy continue...",
     },
     {
       id: 2,
@@ -30,7 +41,7 @@ export default function MangasPage() {
       image: "/api/placeholder/300/400",
       rating: 4.8,
       status: "Terminé",
-      description: "La bataille finale pour l'humanité..."
+      description: "La bataille finale pour l'humanité...",
     },
     {
       id: 3,
@@ -39,8 +50,8 @@ export default function MangasPage() {
       image: "/api/placeholder/300/400",
       rating: 4.7,
       status: "Terminé",
-      description: "Tanjiro face à ses derniers défis..."
-    }
+      description: "Tanjiro face à ses derniers défis...",
+    },
   ]
 
   const mangaCollection = [
@@ -55,7 +66,7 @@ export default function MangasPage() {
       genre: "Shōnen",
       year: 1997,
       isFavorite: true,
-      isReading: true
+      isReading: true,
     },
     {
       id: 2,
@@ -68,7 +79,7 @@ export default function MangasPage() {
       genre: "Shōnen",
       year: 2009,
       isFavorite: true,
-      isReading: false
+      isReading: false,
     },
     {
       id: 3,
@@ -81,7 +92,7 @@ export default function MangasPage() {
       genre: "Shōnen",
       year: 2016,
       isFavorite: false,
-      isReading: false
+      isReading: false,
     },
     {
       id: 4,
@@ -94,7 +105,7 @@ export default function MangasPage() {
       genre: "Shōnen",
       year: 2014,
       isFavorite: true,
-      isReading: true
+      isReading: true,
     },
     {
       id: 5,
@@ -107,7 +118,7 @@ export default function MangasPage() {
       genre: "Shōnen",
       year: 2018,
       isFavorite: false,
-      isReading: true
+      isReading: true,
     },
     {
       id: 6,
@@ -120,15 +131,15 @@ export default function MangasPage() {
       genre: "Seinen",
       year: 2011,
       isFavorite: false,
-      isReading: false
-    }
+      isReading: false,
+    },
   ]
 
   const filterOptions = [
     { id: "tous", label: "Tous", icon: BookOpen },
     { id: "en-cours", label: "En cours", icon: Clock },
     { id: "favoris", label: "Favoris", icon: Heart },
-    { id: "tendances", label: "Tendances", icon: Flame }
+    { id: "tendances", label: "Tendances", icon: Flame },
   ]
 
   /**
@@ -139,13 +150,16 @@ export default function MangasPage() {
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + featuredMangas.length) % featuredMangas.length)
+    setCurrentSlide(
+      (prev) => (prev - 1 + featuredMangas.length) % featuredMangas.length
+    )
   }
 
-  const filteredMangas = mangaCollection.filter(manga => {
-    const matchesSearch = manga.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         manga.author.toLowerCase().includes(searchTerm.toLowerCase())
-    
+  const filteredMangas = mangaCollection.filter((manga) => {
+    const matchesSearch =
+      manga.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      manga.author.toLowerCase().includes(searchTerm.toLowerCase())
+
     switch (activeFilter) {
       case "en-cours":
         return matchesSearch && manga.isReading
@@ -170,9 +184,11 @@ export default function MangasPage() {
             <h1 className="font-spaceGrotesk text-2xl font-bold text-gray-800">
               Ma Collection
             </h1>
-            <p className="text-gray-600 mt-1">{mangaCollection.length} mangas dans votre bibliothèque</p>
+            <p className="text-gray-600 mt-1">
+              {mangaCollection.length} mangas dans votre bibliothèque
+            </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Barre de recherche */}
             <div className="relative">
@@ -185,7 +201,7 @@ export default function MangasPage() {
                 className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent w-full sm:w-64"
               />
             </div>
-            
+
             <button className="flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors">
               <Plus className="h-4 w-4" />
               Ajouter un manga
@@ -198,14 +214,13 @@ export default function MangasPage() {
       <div className="mb-8 bg-white rounded-lg shadow-sm border overflow-hidden">
         <div className="p-6 pb-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-            <Flame className="h-5 w-5 text-orange-500" />
-            À la une
+            <Flame className="h-5 w-5 text-orange-500" />À la une
           </h2>
         </div>
-        
+
         <div className="relative">
           <div className="overflow-hidden">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
@@ -223,19 +238,29 @@ export default function MangasPage() {
                     </div>
                     <div className="md:w-2/3 md:pl-8 flex flex-col justify-center">
                       <div className="mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">{manga.title}</h3>
-                        <p className="text-gray-600 mb-3">{manga.description}</p>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                          {manga.title}
+                        </h3>
+                        <p className="text-gray-600 mb-3">
+                          {manga.description}
+                        </p>
                         <div className="flex items-center gap-4 mb-4">
                           <div className="flex items-center gap-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium">{manga.rating}</span>
+                            <span className="text-sm font-medium">
+                              {manga.rating}
+                            </span>
                           </div>
-                          <span className="text-sm text-gray-600">{manga.chapter}</span>
-                          <span className={`px-2 py-1 text-xs rounded-full ${
-                            manga.status === "En cours" 
-                              ? "bg-green-100 text-green-800" 
-                              : "bg-blue-100 text-blue-800"
-                          }`}>
+                          <span className="text-sm text-gray-600">
+                            {manga.chapter}
+                          </span>
+                          <span
+                            className={`px-2 py-1 text-xs rounded-full ${
+                              manga.status === "En cours"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-blue-100 text-blue-800"
+                            }`}
+                          >
                             {manga.status}
                           </span>
                         </div>
@@ -256,7 +281,7 @@ export default function MangasPage() {
               ))}
             </div>
           </div>
-          
+
           {/* Boutons de navigation */}
           <button
             onClick={prevSlide}
@@ -270,7 +295,7 @@ export default function MangasPage() {
           >
             <ChevronRight className="h-5 w-5 text-gray-600" />
           </button>
-          
+
           {/* Indicateurs */}
           <div className="flex justify-center space-x-2 pb-6">
             {featuredMangas.map((_, index) => (
@@ -312,7 +337,10 @@ export default function MangasPage() {
       {/* Grille des mangas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {filteredMangas.map((manga) => (
-          <div key={manga.id} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow group">
+          <div
+            key={manga.id}
+            className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow group"
+          >
             <div className="relative">
               <Image
                 src={manga.image}
@@ -321,7 +349,7 @@ export default function MangasPage() {
                 height={280}
                 className="w-full h-64 object-cover rounded-t-lg"
               />
-              
+
               {/* Badges de statut */}
               <div className="absolute top-2 left-2 flex flex-col gap-1">
                 {manga.isFavorite && (
@@ -335,7 +363,7 @@ export default function MangasPage() {
                   </div>
                 )}
               </div>
-              
+
               {/* Overlay au hover */}
               <div className="absolute inset-0 bg-black bg-opacity-50 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <button className="px-4 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors">
@@ -343,26 +371,34 @@ export default function MangasPage() {
                 </button>
               </div>
             </div>
-            
+
             <div className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-1 truncate">{manga.title}</h3>
+              <h3 className="font-semibold text-gray-900 mb-1 truncate">
+                {manga.title}
+              </h3>
               <p className="text-sm text-gray-600 mb-2">{manga.author}</p>
-              
+
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1">
                   <Star className="h-4 w-4 text-yellow-500 fill-current" />
                   <span className="text-sm font-medium">{manga.rating}</span>
                 </div>
-                <span className="text-xs text-gray-500">{manga.chapters} ch.</span>
+                <span className="text-xs text-gray-500">
+                  {manga.chapters} ch.
+                </span>
               </div>
-              
+
               <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-500">{manga.genre} • {manga.year}</span>
-                <span className={`px-2 py-1 text-xs rounded-full ${
-                  manga.status === "En cours" 
-                    ? "bg-green-100 text-green-800" 
-                    : "bg-blue-100 text-blue-800"
-                }`}>
+                <span className="text-xs text-gray-500">
+                  {manga.genre} • {manga.year}
+                </span>
+                <span
+                  className={`px-2 py-1 text-xs rounded-full ${
+                    manga.status === "En cours"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-blue-100 text-blue-800"
+                  }`}
+                >
                   {manga.status}
                 </span>
               </div>
@@ -375,8 +411,13 @@ export default function MangasPage() {
       {filteredMangas.length === 0 && (
         <div className="text-center py-12">
           <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Aucun manga trouvé</h3>
-          <p className="text-gray-600">Essayez de modifier vos critères de recherche ou ajoutez de nouveaux mangas à votre collection.</p>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
+            Aucun manga trouvé
+          </h3>
+          <p className="text-gray-600">
+            Essayez de modifier vos critères de recherche ou ajoutez de nouveaux
+            mangas à votre collection.
+          </p>
         </div>
       )}
     </>
