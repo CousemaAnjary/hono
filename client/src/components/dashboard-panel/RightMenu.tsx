@@ -4,11 +4,17 @@ import UserMenu from "../../features/auth/components/UserMenu"
 import NotificationMenu from "./NotificationMenu"
 
 export default function RightMenu() {
-  // ! STATE (état, données) de l'application
+  /**
+   * ! STATE (état, données) de l'application
+   */
 
-  // ! ACTIONS (actions, fonctions) de l'application
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
 
-  // ! AFFICHAGE (affichage, UI) de l'application
+  /**
+   * ! AFFICHAGE (render) de l'application
+   */
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-2">
