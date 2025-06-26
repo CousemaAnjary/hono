@@ -1,5 +1,7 @@
+import { TanstackProvider } from "@/src/components/providers/tanstack-providers"
 import type { Metadata } from "next"
 import { Inter, Mansalva, Mogra, Space_Grotesk } from "next/font/google"
+import { Toaster } from "sonner"
 import "./globals.css"
 
 const inter = Inter({
@@ -41,7 +43,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${mansalva.variable} ${mogra.variable}`}
       >
-        {children}
+        <Toaster richColors />
+        <TanstackProvider> {children}</TanstackProvider>
       </body>
     </html>
   )
