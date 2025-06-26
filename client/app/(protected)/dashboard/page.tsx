@@ -8,7 +8,6 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 
-
 export default function page() {
   /**
    * ! STATE (état, données) de l'application
@@ -131,12 +130,15 @@ export default function page() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Activité récente */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-pink-600" />
-            Activité récente
-          </h2>
-          <div className="space-y-4">
+        <div className="lg:col-span-2">
+          <div className="bg-white rounded-lg  border p-3 mb-4">
+            <h2 className="text-lg font-medium font-spaceGrotesk text-gray-800 flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-pink-600" />
+              Activité récente
+            </h2>
+          </div>
+
+          <div className="space-y-4 bg-white p-4 rounded-lg border">
             <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
               <div className="w-12 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded flex items-center justify-center">
                 <BookOpen className="h-6 w-6 text-white" />
@@ -186,87 +188,86 @@ export default function page() {
         </div>
 
         {/* Mangas populaires */}
-       
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-600" />
-              Mangas populaires
-            </h2>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-2">
-                  <Image
-                    src="/api/placeholder/120/160"
-                    alt="One Piece"
-                    width={120}
-                    height={160}
-                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                  />
-                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                    4.9
-                  </div>
-                </div>
-                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                  One Piece
-                </h3>
-              </div>
 
-              <div className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-2">
-                  <Image
-                    src="/api/placeholder/120/160"
-                    alt="Attack on Titan"
-                    width={120}
-                    height={160}
-                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                  />
-                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                    4.8
-                  </div>
+        <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <Star className="h-5 w-5 text-yellow-600" />
+            Mangas populaires
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="group cursor-pointer">
+              <div className="relative overflow-hidden rounded-lg mb-2">
+                <Image
+                  src="/api/placeholder/120/160"
+                  alt="One Piece"
+                  width={120}
+                  height={160}
+                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                  4.9
                 </div>
-                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                  Attack on Titan
-                </h3>
               </div>
+              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                One Piece
+              </h3>
+            </div>
 
-              <div className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-2">
-                  <Image
-                    src="/api/placeholder/120/160"
-                    alt="Demon Slayer"
-                    width={120}
-                    height={160}
-                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                  />
-                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                    4.7
-                  </div>
+            <div className="group cursor-pointer">
+              <div className="relative overflow-hidden rounded-lg mb-2">
+                <Image
+                  src="/api/placeholder/120/160"
+                  alt="Attack on Titan"
+                  width={120}
+                  height={160}
+                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                  4.8
                 </div>
-                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                  Demon Slayer
-                </h3>
               </div>
+              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                Attack on Titan
+              </h3>
+            </div>
 
-              <div className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-2">
-                  <Image
-                    src="/api/placeholder/120/160"
-                    alt="Jujutsu Kaisen"
-                    width={120}
-                    height={160}
-                    className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
-                  />
-                  <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
-                    4.8
-                  </div>
+            <div className="group cursor-pointer">
+              <div className="relative overflow-hidden rounded-lg mb-2">
+                <Image
+                  src="/api/placeholder/120/160"
+                  alt="Demon Slayer"
+                  width={120}
+                  height={160}
+                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                  4.7
                 </div>
-                <h3 className="text-xs font-medium text-gray-900 text-center truncate">
-                  Jujutsu Kaisen
-                </h3>
               </div>
+              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                Demon Slayer
+              </h3>
+            </div>
+
+            <div className="group cursor-pointer">
+              <div className="relative overflow-hidden rounded-lg mb-2">
+                <Image
+                  src="/api/placeholder/120/160"
+                  alt="Jujutsu Kaisen"
+                  width={120}
+                  height={160}
+                  className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-200"
+                />
+                <div className="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded">
+                  4.8
+                </div>
+              </div>
+              <h3 className="text-xs font-medium text-gray-900 text-center truncate">
+                Jujutsu Kaisen
+              </h3>
             </div>
           </div>
-        
+        </div>
       </div>
     </>
   )
