@@ -1,4 +1,5 @@
 "use client"
+import { useCurrentUser } from "@/src/features/auth/queries/useCurrentUser"
 import { Settings, User } from "lucide-react"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
@@ -13,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
 import SignOut from "./SignOut"
-import { useCurrentUser } from "@/src/features/auth/queries/useCurrentUser"
 
 export default function UserMenu() {
   /**
