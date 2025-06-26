@@ -12,7 +12,7 @@ export default function ProfilePage() {
    */
   return (
     <>
-      <div className="mb-8 flex w-full items-center justify-between rounded-md  p-4 bg-gray-50">
+      <div className="mb-8 flex w-full items-center justify-between rounded-md p-4 bg-white">
         <h1 className="font-spaceGrotesk font-medium text-gray-800">
           Mes informations personnelles
         </h1>

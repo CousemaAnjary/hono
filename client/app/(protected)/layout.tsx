@@ -1,23 +1,23 @@
 import Navbar from "@/src/components/dashboard-panel/Navbar";
 
-export default function DashboardLayout({children}: {children: React.ReactNode}) {
-  // ! STATE (état, données) de l'application
-  
-  
-  // ! ACTIONS (actions, fonctions) de l'application
-  
-  
-  // ! AFFICHAGE (affichage, UI) de l'application
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  /**
+   * ! STATE (état, données) de l'application
+   */
+
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
+
+  /**
+   * ! AFFICHAGE (render) de l'application
+   */
   return (
-    <>
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
-      <main className="flex-1 overflow-hidden bg-background">
-        <div className="container flex h-full max-w-7xl flex-col items-center justify-center px-4 md:px-6">
-          <div className="flex w-full max-w-3xl flex-col items-start justify-start gap-6 py-8">
-            {children}
-          </div>
-        </div>
+      <main className="flex-1 py-8 sm:px-8">
+        <div className="mx-auto max-w-[95rem] px-6">{children}</div>
       </main>
-    </>
-  )
+    </div>
+  );
 }
