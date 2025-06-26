@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const navigationLinks = [
     { href: "/dashboard", label: "Accueil", icon: Home },
-    { href: "/mangas", label: "Mangas", icon: Bookmark },
+    { href: "/collections", label: "Collections", icon: Bookmark },
     { href: "/planning", label: "Planning de lecture", icon: Calendar },
     { href: "/favoris", label: "Favoris", icon: Heart },
   ]
@@ -47,8 +47,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`transition-colors px-3 py-2 rounded-md font-spaceGrotesk flex items-center gap-2 ${
                       isActive
-                        ? "bg-gray-100 text-primary font-semibold"
-                        : " hover:text-primary"
+                        ? "bg-pink-50 text-pink-700 font-semibold "
+                        : " hover:text-pink-700"
                     }`}
                   >
                     <IconComponent size={16} />

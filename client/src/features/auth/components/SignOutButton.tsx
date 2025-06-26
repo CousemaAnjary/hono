@@ -1,8 +1,9 @@
 "use client"
 import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu"
-import { CloudRain, Frown } from "lucide-react"
+import { LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { BsEmojiTear } from "react-icons/bs"
 import { useLogout } from "../hooks/useLogout"
 
 export default function SignOutButton() {
@@ -38,9 +39,13 @@ export default function SignOutButton() {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
-        <Frown size={16} className="mr-1 opacity-60" aria-hidden="true" />
+        <BsEmojiTear
+          size={18}
+          className="mr-1  text-pink-500"
+          aria-hidden="true"
+        />
       ) : (
-        <CloudRain size={16} className="mr-1 opacity-60" aria-hidden="true" />
+        <LogOut size={18} className="mr-1  text-pink-500" aria-hidden="true" />
       )}
       <span>Déconnexion</span>
     </DropdownMenuItem>
