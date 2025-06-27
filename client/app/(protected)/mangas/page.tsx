@@ -2,8 +2,6 @@
 
 import {
   BookOpen,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   Eye,
   Flame,
@@ -11,23 +9,25 @@ import {
   Star,
 } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useCallback, useEffect } from "react"
+import useEmblaCarousel from "embla-carousel-react"
+
+import man1 from "@/public/images/man1.jpg"
+// import man2 from "@/public/images/man2.jpg"
+// import man3 from "@/public/images/man3.jpg"
+
 
 export default function MangasPage() {
-  /**
-   * ! STATE (état, données) de l'application
-   */
-
   const [activeFilter, setActiveFilter] = useState("tous")
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  // Données de démonstration
   const featuredMangas = [
     {
       id: 1,
       title: "One Piece",
       chapter: "Chapitre 1100",
-      image: "/api/placeholder/300/400",
+      image: man1,
       rating: 4.9,
       status: "En cours",
       description: "L'aventure épique de Monkey D. Luffy continue...",
@@ -59,25 +59,24 @@ export default function MangasPage() {
     { id: "tendances", label: "Tendances", icon: Flame },
   ]
 
-  /**
-   * ! COMPORTEMENT (méthodes, fonctions) de l'application
-   */
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % featuredMangas.length)
-  }
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index)
+  }, [emblaApi])
 
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + featuredMangas.length) % featuredMangas.length
-    )
-  }
+  useEffect(() => {
+    if (!emblaApi) return
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+    }
+    emblaApi.on("select", onSelect)
+    onSelect()
+  }, [emblaApi])
 
-  /**
-   * ! AFFICHAGE (render) de l'application
-   */
   return (
     <>
-      {/* Carrousel des mangas à la une */}
+      {/* Carrousel Embla */}
+
+
       <div className="mb-8 bg-white rounded-lg shadow-sm border overflow-hidden">
         <div className="p-6 pb-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
@@ -85,96 +84,69 @@ export default function MangasPage() {
           </h2>
         </div>
 
-        <div className="relative">
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {featuredMangas.map((manga) => (
-                <div key={manga.id} className="w-full flex-shrink-0">
-                  <div className="flex flex-col md:flex-row p-6">
-                    <div className="md:w-1/3 mb-4 md:mb-0">
-                      <Image
-                        src={manga.image}
-                        alt={manga.title}
-                        width={300}
-                        height={400}
-                        className="w-full h-64 md:h-80 object-cover rounded-lg"
-                      />
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {featuredMangas.map((manga) => (
+              <div className="min-w-full flex-shrink-0 p-6" key={manga.id}>
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="md:w-1/3">
+                    <Image
+                      src={manga.image}
+                      alt={manga.title}
+                      width={300}
+                      height={400}
+                      className="w-full h-64 md:h-80 object-cover rounded-lg"
+                    />
+                  </div>
+                  <div className="md:w-2/3 flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {manga.title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">{manga.description}</p>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="flex items-center gap-1">
+                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                        <span className="text-sm font-medium">{manga.rating}</span>
+                      </div>
+                      <span className="text-sm text-gray-600">{manga.chapter}</span>
+                      <span
+                        className={`px-2 py-1 text-xs rounded-full ${
+                          manga.status === "En cours"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-blue-100 text-blue-800"
+                        }`}
+                      >
+                        {manga.status}
+                      </span>
                     </div>
-                    <div className="md:w-2/3 md:pl-8 flex flex-col justify-center">
-                      <div className="mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {manga.title}
-                        </h3>
-                        <p className="text-gray-600 mb-3">
-                          {manga.description}
-                        </p>
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="flex items-center gap-1">
-                            <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="text-sm font-medium">
-                              {manga.rating}
-                            </span>
-                          </div>
-                          <span className="text-sm text-gray-600">
-                            {manga.chapter}
-                          </span>
-                          <span
-                            className={`px-2 py-1 text-xs rounded-full ${
-                              manga.status === "En cours"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-blue-100 text-blue-800"
-                            }`}
-                          >
-                            {manga.status}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex gap-3">
-                        <button className="flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors">
-                          <Eye className="h-4 w-4" />
-                          Lire maintenant
-                        </button>
-                        <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                          <Heart className="h-4 w-4" />
-                          Ajouter aux favoris
-                        </button>
-                      </div>
+                    <div className="flex gap-3">
+                      <button className="flex items-center gap-2 px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors">
+                        <Eye className="h-4 w-4" />
+                        Lire maintenant
+                      </button>
+                      <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <Heart className="h-4 w-4" />
+                        Ajouter aux favoris
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Boutons de navigation */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-          >
-            <ChevronLeft className="h-5 w-5 text-gray-600" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-          >
-            <ChevronRight className="h-5 w-5 text-gray-600" />
-          </button>
-
-          {/* Indicateurs */}
-          <div className="flex justify-center space-x-2 pb-6">
-            {featuredMangas.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentSlide ? "bg-pink-600" : "bg-gray-300"
-                }`}
-              />
+              </div>
             ))}
           </div>
+        </div>
+
+        {/* Indicateurs Embla */}
+        <div className="flex justify-center space-x-2 pb-6 pt-2">
+          {featuredMangas.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollTo(index)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === selectedIndex ? "bg-pink-600" : "bg-gray-300"
+              }`}
+            />
+          ))}
         </div>
       </div>
 
