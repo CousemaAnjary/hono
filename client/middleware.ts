@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 
 
-const protectedRoutes = ["/dashboard"]
+const protectedRoutes = ["/dashboard", "/profile", "/mangas", "/planning"]
 const publicRoutes = ["/", "/login", "/register"]
 
 export async function middleware(request: NextRequest) {
