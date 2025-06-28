@@ -1,6 +1,17 @@
 import FeatureMangas from "@/src/features/mangas/components/FeatureMangas"
 
 export default function MangasPage() {
+  /**
+   * ! STATE (état, données) de l'application
+   */
+
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
+
+  /**
+   * ! AFFICHAGE (render) de l'application
+   */
   return (
     <>
       <FeatureMangas />
