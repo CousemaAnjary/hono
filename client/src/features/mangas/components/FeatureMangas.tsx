@@ -9,13 +9,8 @@ export default function FeatureMangas() {
   /**
    * ! STATE (état, données) de l'application
    */
-
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  /**
-   * ! COMPORTEMENT (méthodes, fonctions) de l'application
-   */
   const slides = [
     {
       id: 1,
@@ -27,7 +22,9 @@ export default function FeatureMangas() {
       rating: 4.5,
     },
   ]
-
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
   useEffect(() => {
     if (!emblaApi) return
     const onSelect = () => {
