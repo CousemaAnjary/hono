@@ -1,5 +1,4 @@
 "use client"
-
 import man1 from "@/public/images/man1.jpg"
 import useEmblaCarousel from "embla-carousel-react"
 import { BookOpen, Star } from "lucide-react"
@@ -7,9 +6,16 @@ import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
 export default function FeatureMangas() {
+  /**
+   * ! STATE (état, données) de l'application
+   */
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const [selectedIndex, setSelectedIndex] = useState(0)
 
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
   const slides = [
     {
       id: 1,
@@ -38,7 +44,9 @@ export default function FeatureMangas() {
     },
     [emblaApi]
   )
-
+  /**
+   * ! AFFICHAGE (render) de l'application
+   */
   return (
     <div
       className="w-full h-[40vh] relative overflow-hidden rounded-md"
