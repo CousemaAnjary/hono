@@ -14,6 +14,7 @@ export default function MangasPage() {
    */
   return (
     <>
+      {/* Carrousel des mangas en vedette */}
       <FeatureMangas />
       {/* Filtres */}
       {/* <div className="mb-6">
