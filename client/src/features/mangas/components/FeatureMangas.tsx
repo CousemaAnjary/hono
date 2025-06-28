@@ -18,7 +18,7 @@ export default function FeatureMangas() {
         "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
       description: "Chapitre 1 disponible - Sortie du prochain le 9/7",
       image: man1,
-      tags: ["VF", "Fantastique", "Isekai"],
+      tags: ["Fantastique", "Isekai"],
       rating: 4.5,
     },
   ]
