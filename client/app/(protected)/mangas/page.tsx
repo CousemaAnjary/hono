@@ -16,6 +16,7 @@ export default function MangasPage() {
     <>
       {/* Carrousel des mangas en vedette */}
       <FeatureMangas />
+      
       {/* Filtres */}
       {/* <div className="mb-6">
         <div className="flex flex-wrap gap-2">
