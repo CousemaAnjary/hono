@@ -37,7 +37,6 @@ export default function MangasPage() {
     emblaApi.on("select", onSelect)
     onSelect()
   }, [emblaApi])
-
   return (
     <>
       <div className="w-full h-[40vh] relative overflow-hidden rounded-md" ref={emblaRef} >
