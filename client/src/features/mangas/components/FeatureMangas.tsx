@@ -5,6 +5,7 @@ import { BookOpen, Star } from "lucide-react"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
+
 export default function FeatureMangas() {
   /**
    * ! STATE (état, données) de l'application
