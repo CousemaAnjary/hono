@@ -35,6 +35,7 @@ export default function FeatureMangas() {
     onSelect()
   }, [emblaApi])
 
+  
   const scrollTo = useCallback(
     (index: number) => {
       if (emblaApi) emblaApi.scrollTo(index)
