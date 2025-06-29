@@ -5,7 +5,6 @@ import { BookOpen, Star } from "lucide-react"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
-
 export default function FeatureMangas() {
   /**
    * ! STATE (état, données) de l'application
@@ -15,6 +14,15 @@ export default function FeatureMangas() {
   const slides = [
     {
       id: 1,
+      title:
+        "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
+      description: "Chapitre 1 disponible - Sortie du prochain le 9/7",
+      image: man1,
+      tags: ["Fantastique", "Isekai"],
+      rating: 4.5,
+    },
+    {
+      id: 2,
       title:
         "I Was Reincarnated as the 7th Prince so I Can Take My Time Perfecting My Magical Ability",
       description: "Chapitre 1 disponible - Sortie du prochain le 9/7",
@@ -35,7 +43,6 @@ export default function FeatureMangas() {
     onSelect()
   }, [emblaApi])
 
-  
   const scrollTo = useCallback(
     (index: number) => {
       if (emblaApi) emblaApi.scrollTo(index)
