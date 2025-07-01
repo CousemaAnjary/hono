@@ -22,6 +22,7 @@ export default function Navbar() {
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
 
+  
   /**
    * ! AFFICHAGE (render) de l'application
    */
