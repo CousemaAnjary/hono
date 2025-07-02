@@ -1,6 +1,6 @@
 "use client"
 import SignOutButton from "@/src/features/auth/components/SignOutButton"
-import { useCurrentUser } from "@/src/features/auth/queries/useCurrentUser"
+
 import { Settings, User } from "lucide-react"
 import Link from "next/link"
 import {
@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu"
+import { useCurrentUser } from "../queries/useCurrentUser"
 
 
 export default function UserMenu() {
