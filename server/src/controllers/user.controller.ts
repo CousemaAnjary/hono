@@ -1,7 +1,7 @@
 import { Context } from "hono"
 import { currentUser } from "services/user.service"
 
-
+// Récupère l'utilisateur connecté
 export const getCurrentUser = async (c: Context) => {
   try {
     const userPayload = await currentUser(c)
