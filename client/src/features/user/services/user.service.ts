@@ -1,5 +1,6 @@
 import { authFetch } from "@/src/lib/authFetch"
-import { GetCurrentUserResponse } from "@/src/types/auth"
+import { GetCurrentUserResponse } from "@/src/types/user"
+
 
 // Récupère l'utilisateur connecté
 export const getCurrentUser = async () => {
