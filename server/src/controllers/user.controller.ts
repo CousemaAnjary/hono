@@ -1,5 +1,6 @@
 import { Context } from "hono"
 import { currentUser } from "services/user.service"
+import { jsonError } from "utils/jsonError"
 
 // Récupère l'utilisateur connecté
 export const getCurrentUser = async (c: Context) => {
@@ -8,10 +9,6 @@ export const getCurrentUser = async (c: Context) => {
     return c.json({ success: true, message: "Utilisateur récupéré avec succès", userPayload }, 200)
 
   } catch (error) {
-    if (error instanceof Error) {
-      return c.json({ success: false, message: error.message }, 409)
-    }
-   // En cas d'erreur inconnue
-    return c.json({ success: false, message: "Une erreur inconnue est survenue" },500) 
+    return c.json(jsonError(error), 500)
   }
 }
