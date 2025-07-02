@@ -1,4 +1,4 @@
-import ProfileHeader from "@/src/features/auth/components/ProfileHeader"
+import ProfileHeader from "@/src/features/user/components/ProfileHeader"
 
 export default function ProfilePage() {
   /**
