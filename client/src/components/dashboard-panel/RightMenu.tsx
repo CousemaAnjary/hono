@@ -1,9 +1,9 @@
 "use client"
 
-import { Search } from "lucide-react"
-import UserMenu from "../../features/user/components/UserMenu"
-import NotificationMenu from "./NotificationMenu"
 import SearchButton from "./SearchButton"
+import NotificationMenu from "./NotificationMenu"
+import UserMenu from "../../features/user/components/UserMenu"
+
 
 export default function RightMenu() {
   /**
