@@ -26,7 +26,7 @@ export const registerUser = async (data: z.infer<typeof registerSchema>): Promis
   return newUser
 }
 
-export const loginUser = async (data: z.infer<typeof loginSchema>):  Promise<{ accessToken: string }>  => {
+export const loginUser = async (data: z.infer<typeof loginSchema>): Promise<{ accessToken: string }>  => {
   
   // Destructuration des données validées
   const { email, password } = data
