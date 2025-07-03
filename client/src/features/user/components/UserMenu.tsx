@@ -20,7 +20,6 @@ import {
 } from "../../../components/ui/dropdown-menu"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
-
 export default function UserMenu() {
   /**
    * ! STATE (état, données) de l'application
@@ -39,7 +38,10 @@ export default function UserMenu() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
           <Avatar className="rounded-lg">
-            <AvatarImage src="https://github.com/evilrabbit.png" alt="Profile image" />
+            <AvatarImage
+              src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
+              alt="Profile image"
+            />
             <AvatarFallback>AC</AvatarFallback>
           </Avatar>
         </Button>
@@ -57,7 +59,10 @@ export default function UserMenu() {
 
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="/profile" className="flex items-center font-spaceGrotesk">
+            <Link
+              href="/profile"
+              className="flex items-center font-spaceGrotesk"
+            >
               <User className="mr-1 size-4 text-muted-foreground " />
               Profile
             </Link>

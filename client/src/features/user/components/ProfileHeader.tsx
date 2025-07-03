@@ -4,6 +4,7 @@ import { Avatar, AvatarImage } from "@/src/components/ui/avatar"
 import Image from "next/image"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
+
 export default function ProfileHeader() {
   /**
    * ! STATE (état, données) de l'application
@@ -29,7 +30,7 @@ export default function ProfileHeader() {
 
       <div className="relative -mt-20 flex flex-col items-start px-6 pb-6">
         <div className="relative">
-          <Avatar className="h-36 w-36 rounded-xl">
+          <Avatar className="h-36 w-36 rounded-xl border-2 border-white shadow-md">
             <AvatarImage
               src= {`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
               alt="Profile image"
