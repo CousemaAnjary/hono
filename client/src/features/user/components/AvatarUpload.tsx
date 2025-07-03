@@ -7,14 +7,15 @@ import { useFileUpload } from "@/src/hooks/use-file-upload"
 import { XIcon } from "lucide-react"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
+
 export default function AvatarUpload() {
   /**
    * ! STATE (état, données) de l'application
    */
   const { data: userPayload } = useCurrentUser()
   const previewUrl = userPayload?.image || null
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
-    useFileUpload({
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
+   
       accept: "image/*",
     })
   /**
