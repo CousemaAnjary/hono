@@ -16,6 +16,7 @@ import {
 } from "../../../components/ui/dropdown-menu"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
+
 export default function UserMenu() {
   /**
    * ! STATE (état, données) de l'application
