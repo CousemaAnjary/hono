@@ -1,13 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
+import user from "@/public/images/user.png"
 import SignOutButton from "@/src/features/auth/components/SignOutButton"
-
 import { Settings, User } from "lucide-react"
 import Link from "next/link"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "../../../components/ui/avatar"
 import { Button } from "../../../components/ui/button"
 import {
   DropdownMenu,
@@ -37,13 +33,11 @@ export default function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
-          <Avatar className="rounded-lg">
-            <AvatarImage
-              src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
-              alt="Profile image"
-            />
-            <AvatarFallback>AC</AvatarFallback>
-          </Avatar>
+          <img
+            src={user.src}
+            alt="Image de profil par défaut"
+            className="size-6 object-cover"
+          />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mt-3" align="end">
