@@ -3,8 +3,8 @@
 import { XIcon } from "lucide-react"
 import user from "@/public/images/user.png"
 import { Button } from "@/src/components/ui/button"
-import { useCurrentUser } from "../queries/useCurrentUser"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
+import { useCurrentUser } from "../queries/useCurrentUser"
 
 
 export default function AvatarUpload() {
