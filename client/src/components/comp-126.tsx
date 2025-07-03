@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { CircleUserRoundIcon, XIcon } from "lucide-react"
