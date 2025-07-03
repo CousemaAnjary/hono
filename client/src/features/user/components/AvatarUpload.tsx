@@ -3,7 +3,7 @@
 import user from "@/public/images/user.png"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
-import { PencilIcon, XIcon } from "lucide-react"
+import { Pencil, XIcon } from "lucide-react"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
 
@@ -27,7 +27,7 @@ export default function AvatarUpload() {
     <div className="relative">
       <Button
         variant="outline"
-        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent group"
+        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent hover:bg-transparent group"
         onClick={openFileDialog}
         aria-label={previewUrl ? "Changer l'image" : "Uploader une image"}
       >
@@ -46,8 +46,8 @@ export default function AvatarUpload() {
         )}
         
         {/* Icône d'édition qui apparaît au hover */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-          <PencilIcon className="size-8 text-white drop-shadow-lg" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60">
+          <Pencil className="size-7 text-white drop-shadow-lg" />
         </div>
       </Button>
 
