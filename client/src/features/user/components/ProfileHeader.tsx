@@ -4,7 +4,6 @@ import Image from "next/image"
 import { useCurrentUser } from "../queries/useCurrentUser"
 import AvatarUpload from "./AvatarUpload"
 
-
 export default function ProfileHeader() {
   /**
    * ! STATE (état, données) de l'application
@@ -18,7 +17,7 @@ export default function ProfileHeader() {
    * ! AFFICHAGE (render) de l'application
    */
   return (
-    <div className="mx-auto overflow-hidden rounded-md bg-white shadow-sm">
+    <div className="mx-auto overflow-hidden rounded-md bg-white shadow">
       <div className="relative h-72 w-full">
         <Image
           src={profileCover}
@@ -35,7 +34,8 @@ export default function ProfileHeader() {
           {userPayload?.name}
         </h2>
         <p className="mt-1 text-center font-spaceGrotesk text-sm text-muted-foreground max-md:mt-2 max-md:text-left">
-          Explorateur curieux, toujours en quête de nouvelles expériences
+          Fan de mangas, toujours à la recherche de nouvelles aventures à
+          dévorer ✨
         </p>
       </div>
     </div>
