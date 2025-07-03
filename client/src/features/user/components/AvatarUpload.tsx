@@ -5,14 +5,13 @@ import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
 import { Pencil, XIcon } from "lucide-react"
 
-
 export default function AvatarUpload() {
   /**
    * ! STATE (état, données) de l'application
    */
   // const { data: userPayload } = useCurrentUser()
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
-  
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
+    useFileUpload({
       accept: "image/*",
     })
   const previewUrl = files[0]?.preview || null
@@ -24,28 +23,21 @@ export default function AvatarUpload() {
    * ! AFFICHAGE (render) de l'application
    */
   return (
-    <div className="relative">
+    <div className="relative size-36">
       <Button
         variant="outline"
-        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent hover:bg-transparent group"
+        className="group relative size-full rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent hover:bg-transparent"
         onClick={openFileDialog}
-        aria-label={previewUrl ? "Changer l'image" : "Uploader une image"}
       >
-        {previewUrl ? (
+        <div className="absolute inset-0">
           <img
-            src={previewUrl}
-            alt="Aperçu de l'image"
-            className="size-full object-cover transition-all duration-200 group-hover:blur-sm"
+            src={previewUrl || user.src}
+            alt="Image de profil"
+            className={`h-full w-full object-cover transition-all duration-200 group-hover:blur-sm ${!previewUrl ? "object-contain p-5" : ""}`}
           />
-        ) : (
-          <img
-            src={typeof user === "string" ? user : user.src}
-            alt="Image de profil par défaut"
-            className="size-24 transition-all duration-300 group-hover:blur-sm"
-          />
-        )}
+        </div>
 
-        {/* Icône d'édition qui apparaît au hover */}
+        {/* Icône d'édition */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
           <Pencil className="size-7 text-white drop-shadow-lg" />
         </div>
@@ -55,7 +47,7 @@ export default function AvatarUpload() {
         <Button
           onClick={() => removeFile(files[0]?.id)}
           size="icon"
-          className="absolute -top-2 -right-2 size-6 rounded-full border-2 border-background shadow-none"
+          className="absolute -top-2 -right-2 size-6 rounded-full border-2 border-background shadow-none z-10"
           aria-label="Supprimer l'image"
         >
           <XIcon className="size-3.5" />
