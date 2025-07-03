@@ -1,5 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
+
 import { Avatar, AvatarImage } from "@/src/components/ui/avatar"
+import { Button } from "@/src/components/ui/button"
+import { useFileUpload } from "@/src/hooks/use-file-upload"
+import { XIcon } from "lucide-react"
 import { useCurrentUser } from "../queries/useCurrentUser"
 
 export default function AvatarUpload() {
@@ -7,7 +12,11 @@ export default function AvatarUpload() {
    * ! STATE (état, données) de l'application
    */
   const { data: userPayload } = useCurrentUser()
-
+  const previewUrl = userPayload?.image || null
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
+    useFileUpload({
+      accept: "image/*",
+    })
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
@@ -16,13 +25,46 @@ export default function AvatarUpload() {
    * ! AFFICHAGE (render) de l'application
    */
   return (
-    <div className="relative inline-flex">
-      <Avatar className="h-36 w-36 rounded-xl border-2 border-white shadow-md">
-        <AvatarImage
-          src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
-          alt="Profile image"
-        />
-      </Avatar>
+    <div className="relative">
+      <Button
+        variant="outline"
+        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent"
+        onClick={openFileDialog}
+        aria-label={previewUrl ? "Changer l'image" : "Uploader une image"}
+      >
+        {previewUrl ? (
+          <img
+            src={previewUrl}
+            alt="Aperçu de l'image"
+            className="size-full object-cover"
+          />
+        ) : (
+          <Avatar className="h-36 w-36 rounded-xl border-2 border-white shadow-md">
+            <AvatarImage
+              src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
+              alt="Profile image"
+            />
+          </Avatar>
+        )}
+      </Button>
+
+      {previewUrl && (
+        <Button
+          onClick={() => removeFile(files[0]?.id)}
+          size="icon"
+          className="absolute -top-2 -right-2 size-6 rounded-full border-2 border-background shadow-none"
+          aria-label="Supprimer l'image"
+        >
+          <XIcon className="size-3.5" />
+        </Button>
+      )}
+
+      <input
+        {...getInputProps()}
+        className="sr-only"
+        aria-label="Uploader un fichier image"
+        tabIndex={-1}
+      />
     </div>
   )
 }
