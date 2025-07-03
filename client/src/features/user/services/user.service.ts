@@ -1,5 +1,5 @@
 import { authFetch } from "@/src/lib/authFetch"
-import { GetCurrentUserResponse } from "@/src/types/user"
+import { GetCurrentUserResponse } from "../types/user"
 
 
 // Récupère l'utilisateur connecté
