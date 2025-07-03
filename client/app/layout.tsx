@@ -1,8 +1,9 @@
-import { TanstackProvider } from "@/src/components/providers/tanstack-providers"
+import { TanstackProvider } from "@/src/components/providers/tanstack-provider"
 import type { Metadata } from "next"
 import { Inter, Mansalva, Mogra, Space_Grotesk } from "next/font/google"
 import { Toaster } from "sonner"
 import "./globals.css"
+import { ThemeProvider } from "next-themes"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,12 +40,21 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${mansalva.variable} ${mogra.variable}`}
       >
         <Toaster richColors />
-        <TanstackProvider> {children}</TanstackProvider>
+        <TanstackProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </TanstackProvider>
       </body>
     </html>
   )

@@ -1,21 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 import user from "@/public/images/user.png"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/src/components/ui/select"
 import SignOutButton from "@/src/features/auth/components/SignOutButton"
-import { Settings, User } from "lucide-react"
-import Link from "next/link"
 import { Button } from "../../../components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu"
 import { useCurrentUser } from "../queries/useCurrentUser"
-
+import ThemeSwitcher from "./ThemeSwitcher"
 
 export default function UserMenu() {
   /**
@@ -41,33 +46,39 @@ export default function UserMenu() {
           />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mt-3" align="end">
-        <DropdownMenuLabel className="flex min-w-0 flex-col">
-          <span className="text-foreground truncate text-sm font-medium">
-            {userPayload?.name}
-          </span>
-          <span className="text-muted-foreground truncate text-xs font-normal">
-            {userPayload?.email}
-          </span>
-        </DropdownMenuLabel>
+      <DropdownMenuContent className="mt-3 w-72" align="end">
+        <DropdownMenuItem className="flex w-full items-start gap-2 px-3 py-2 cursor-pointer">
+          <div className="min-w-0 flex flex-col overflow-hidden">
+            <span className="truncate text-sm font-medium text-foreground font-spaceGrotesk">
+              {userPayload?.name || "Nom d’utilisateur"}
+            </span>
+            <span className="truncate text-xs text-muted-foreground font-normal font-spaceGrotesk">
+              {userPayload?.email || "email@example.com"}
+            </span>
+          </div>
+        </DropdownMenuItem>
+
         <DropdownMenuSeparator />
 
-        <DropdownMenuGroup>
-          <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link
-              href="/profile"
-              className="flex items-center font-spaceGrotesk"
-            >
-              <User className="mr-1 size-4 text-muted-foreground " />
-              Profile
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="#" className="flex items-center font-spaceGrotesk">
-              <Settings className="mr-1 size-4 text-muted-foreground" />
-              Paramètres
-            </Link>
-          </DropdownMenuItem>
+        <DropdownMenuGroup className="space-y-3 p-2">
+          <div className="flex items-center justify-between">
+            <span className="font-spaceGrotesk text-sm">Thème</span>
+            <ThemeSwitcher />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="font-spaceGrotesk text-sm">Langue</span>
+            <Select defaultValue="fr">
+              <SelectTrigger className="h-7 w-[130px] font-spaceGrotesk">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup className="font-spaceGrotesk">
+                  <SelectItem value="fr">🇫🇷 Français</SelectItem>
+                  <SelectItem value="en">🇬🇧 English</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
