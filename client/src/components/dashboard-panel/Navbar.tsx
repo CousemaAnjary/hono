@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import RightMenu from "./RightMenu"
 
+
 export default function Navbar() {
   /**
    * ! STATE (état, données) de l'application
