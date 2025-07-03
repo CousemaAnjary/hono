@@ -21,6 +21,7 @@ import {
 } from "../../../components/ui/dropdown-menu"
 import { useCurrentUser } from "../queries/useCurrentUser"
 import ThemeSwitcher from "./ThemeSwitcher"
+import Link from "next/link"
 
 export default function UserMenu() {
   /**
@@ -47,15 +48,17 @@ export default function UserMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mt-3 w-72" align="end">
-        <DropdownMenuItem className="flex w-full items-start gap-2 px-3 py-2 cursor-pointer">
-          <div className="min-w-0 flex flex-col overflow-hidden">
-            <span className="truncate text-sm font-medium text-foreground font-spaceGrotesk">
-              {userPayload?.name || "Nom d’utilisateur"}
-            </span>
-            <span className="truncate text-xs text-muted-foreground font-normal font-spaceGrotesk">
-              {userPayload?.email || "email@example.com"}
-            </span>
-          </div>
+        <DropdownMenuItem className="flex w-full items-start gap-2 px-3 py-2 cursor-pointer" asChild>
+          <Link href="/profile">
+            <div className="min-w-0 flex flex-col overflow-hidden">
+              <span className="truncate text-sm font-medium text-foreground font-spaceGrotesk">
+                {userPayload?.name || "Nom d’utilisateur"}
+              </span>
+              <span className="truncate text-xs text-muted-foreground font-normal font-spaceGrotesk">
+                {userPayload?.email || "email@example.com"}
+              </span>
+            </div>
+          </Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
