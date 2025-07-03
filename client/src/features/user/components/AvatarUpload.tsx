@@ -27,7 +27,7 @@ export default function AvatarUpload() {
     <div className="relative">
       <Button
         variant="outline"
-        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent"
+        className="relative size-36 rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent "
         onClick={openFileDialog}
         aria-label={previewUrl ? "Changer l'image" : "Uploader une image"}
       >
