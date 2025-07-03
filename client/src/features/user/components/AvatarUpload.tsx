@@ -4,19 +4,18 @@ import user from "@/public/images/user.png"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
 import { Pencil, XIcon } from "lucide-react"
-import { useCurrentUser } from "../queries/useCurrentUser"
 
 
 export default function AvatarUpload() {
   /**
    * ! STATE (état, données) de l'application
    */
-  const { data: userPayload } = useCurrentUser()
-  const previewUrl = userPayload?.image || null
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
-    useFileUpload({
+  // const { data: userPayload } = useCurrentUser()
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
+  
       accept: "image/*",
     })
+  const previewUrl = files[0]?.preview || null
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
@@ -36,7 +35,7 @@ export default function AvatarUpload() {
           <img
             src={previewUrl}
             alt="Aperçu de l'image"
-            className="size-full object-cover transition-all duration-300 group-hover:blur-sm"
+            className="size-full object-cover transition-all duration-200 group-hover:blur-sm"
           />
         ) : (
           <img
@@ -47,7 +46,7 @@ export default function AvatarUpload() {
         )}
 
         {/* Icône d'édition qui apparaît au hover */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
           <Pencil className="size-7 text-white drop-shadow-lg" />
         </div>
       </Button>
