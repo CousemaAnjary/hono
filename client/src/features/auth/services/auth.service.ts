@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { authFetch } from "@/src/lib/authFetch"
 import { loginSchema } from "@/src/validators/auth.validator"
-import { LoginResponse, LogoutResponse } from "@/src/types/auth"
+import { LoginResponse, LogoutResponse } from "../types/auth"
 
 
 // Fonction pour se connecter
