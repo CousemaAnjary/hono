@@ -13,7 +13,8 @@ export default function AvatarUpload() {
    */
   const { data: userPayload } = useCurrentUser()
   const previewUrl = userPayload?.image || null
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
+    useFileUpload({
       accept: "image/*",
     })
   /**
@@ -44,7 +45,7 @@ export default function AvatarUpload() {
             className="size-24 transition-all duration-300 group-hover:blur-sm"
           />
         )}
-        
+
         {/* Icône d'édition qui apparaît au hover */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60">
           <Pencil className="size-7 text-white drop-shadow-lg" />
