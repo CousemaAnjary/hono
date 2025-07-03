@@ -1,5 +1,15 @@
 CREATE TYPE "public"."status" AS ENUM('en cours', 'terminé', 'en pause');--> statement-breakpoint
 CREATE TYPE "public"."type" AS ENUM('manga', 'manhwa', 'manhua');--> statement-breakpoint
+CREATE TABLE "users" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"email" text NOT NULL,
+	"password" text NOT NULL,
+	"image" text,
+	"created_at" timestamp DEFAULT now(),
+	CONSTRAINT "users_email_unique" UNIQUE("email")
+);
+--> statement-breakpoint
 CREATE TABLE "mangas" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"slug" text NOT NULL,
