@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { Avatar, AvatarImage } from "@/src/components/ui/avatar"
+import user from "@/public/images/user.png"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
 import { XIcon } from "lucide-react"
@@ -39,12 +39,11 @@ export default function AvatarUpload() {
             className="size-full object-cover"
           />
         ) : (
-          <Avatar className="h-36 w-36 rounded-xl border-2 border-white shadow-md">
-            <AvatarImage
-              src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userPayload?.email}`}
-              alt="Profile image"
-            />
-          </Avatar>
+          <img
+            src={typeof user === "string" ? user : user.src}
+            alt="Image de profil par défaut"
+            className="size-24"
+          />
         )}
       </Button>
 
