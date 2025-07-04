@@ -7,12 +7,12 @@ import { Pencil, XIcon } from "lucide-react"
 import { useState } from "react"
 import AvatarCropDialog from "./AvatarCropDialog"
 
-
 export default function AvatarUpload() {
   /**
    * ! STATE (état, données) de l'application
    */
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
+    useFileUpload({
       accept: "image/*",
     })
 
@@ -52,7 +52,10 @@ export default function AvatarUpload() {
 
       {(previewUrl || finalImageUrl) && (
         <Button
-          onClick={() => removeFile(files[0]?.id)}
+          onClick={() => {
+            if (fileId) removeFile(fileId)
+            setFinalImageUrl(null)
+          }}
           size="icon"
           className="absolute -top-2 -right-2 size-6 rounded-full border-2 border-background shadow-none z-10"
           aria-label="Supprimer l'image"
