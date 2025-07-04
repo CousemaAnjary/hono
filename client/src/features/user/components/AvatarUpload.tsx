@@ -49,7 +49,7 @@ export default function AvatarUpload() {
         </div>
       </Button>
 
-      {(previewUrl || finalImageUrl) && (
+      {finalImageUrl && (
         <Button
           onClick={() => {
             if (fileId) removeFile(fileId)
