@@ -1,20 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 import user from "@/public/images/user.png"
-import { Pencil, XIcon } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
+import { Pencil, XIcon } from "lucide-react"
+import { useState } from "react"
+import AvatarCropDialog from "./AvatarCropDialog"
 
 
 export default function AvatarUpload() {
   /**
    * ! STATE (état, données) de l'application
    */
-  // const { data: userPayload } = useCurrentUser()
   const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
       accept: "image/*",
     })
+
+  const fileId = files[0]?.id
   const previewUrl = files[0]?.preview || null
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null)
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
@@ -31,9 +36,11 @@ export default function AvatarUpload() {
       >
         <div className="absolute inset-0">
           <img
-            src={previewUrl || user.src}
+            src={finalImageUrl || user.src}
             alt="Image de profil"
-            className={`h-full w-full object-cover transition-all duration-200 group-hover:blur-sm ${!previewUrl ? "object-contain p-5" : ""}`}
+            className={`h-full w-full transition-all duration-200 group-hover:blur-sm ${
+              finalImageUrl ? "object-cover" : "object-contain p-5"
+            }`}
           />
         </div>
 
@@ -43,7 +50,7 @@ export default function AvatarUpload() {
         </div>
       </Button>
 
-      {previewUrl && (
+      {(previewUrl || finalImageUrl) && (
         <Button
           onClick={() => removeFile(files[0]?.id)}
           size="icon"
@@ -60,7 +67,14 @@ export default function AvatarUpload() {
         aria-label="Uploader un fichier image"
         tabIndex={-1}
       />
-      
+
+      <AvatarCropDialog
+        isOpen={isDialogOpen}
+        fileId={fileId}
+        setIsOpen={setIsDialogOpen}
+        previewUrl={previewUrl}
+        setFinalImageUrl={setFinalImageUrl}
+      />
     </div>
   )
 }
