@@ -11,8 +11,7 @@ export default function AvatarUpload() {
    * ! STATE (état, données) de l'application
    */
   // const { data: userPayload } = useCurrentUser()
-  const [{ files }, { removeFile, openFileDialog, getInputProps }] =
-    useFileUpload({
+  const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
       accept: "image/*",
     })
   const previewUrl = files[0]?.preview || null
