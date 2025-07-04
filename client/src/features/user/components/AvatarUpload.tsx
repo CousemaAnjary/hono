@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 import user from "@/public/images/user.png"
+import { Pencil, XIcon } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
-import { Pencil, XIcon } from "lucide-react"
 
 
 export default function AvatarUpload() {
