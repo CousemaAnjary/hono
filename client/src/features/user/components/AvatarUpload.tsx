@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
+
+import { useState } from "react"
 import user from "@/public/images/user.png"
+import { Pencil, XIcon } from "lucide-react"
+import AvatarCropDialog from "./AvatarCropDialog"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
-import { Pencil, XIcon } from "lucide-react"
-import { useState } from "react"
-import AvatarCropDialog from "./AvatarCropDialog"
+
 
 export default function AvatarUpload() {
   /**
