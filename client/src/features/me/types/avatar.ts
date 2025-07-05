@@ -6,13 +6,13 @@ export interface AvatarCropDialogProps {
   setFinalImageUrl: (url: string | null) => void
 }
 
-export type updatedAvatarResponse = {
+export type UpdatedAvatarResponse = {
   success: boolean
   message: string
-  updatedAvatar: updatedAvatar
+  updatedAvatar: UpdatedAvatar
 }
 
-type updatedAvatar = {
+type UpdatedAvatar = {
   id: number
   image: string
 }
