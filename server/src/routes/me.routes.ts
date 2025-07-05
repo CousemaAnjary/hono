@@ -1,10 +1,10 @@
 import { Hono } from "hono"
-import { getCurrentUserController, updateMyAvatar } from "controllers/me.controller"
+import { getCurrentUserController, updateUserAvatarController } from "controllers/me.controller"
 
 
 const meRoutes = new Hono()
   .get('/', getCurrentUserController)
-  .patch('/avatar', updateMyAvatar)
+  .patch('/avatar', updateUserAvatarController)
 
 
 export default meRoutes

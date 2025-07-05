@@ -1,7 +1,8 @@
-import { writeFile } from "fs/promises"
 import { Context } from "hono"
-import { updateAvatar } from "repositories/me.repository"
+import { writeFile } from "fs/promises"
 import { UserPayload } from "types/auth"
+import { updateUserAvatarById } from "repositories/me.repository"
+
 
 export const getCurrentUserService = async (c: Context): Promise<UserPayload> => {
   // Récupérer l'utilisateur à partir du contexte
@@ -10,7 +11,7 @@ export const getCurrentUserService = async (c: Context): Promise<UserPayload> =>
   return user
 }
 
-export const updateUserAvatar = async (image: File , c:Context ) => {
+export const updateUserAvatarService = async (image: File , c:Context ) => {
 
   const user = c.get("user") as UserPayload
   const userId = user.id
@@ -32,7 +33,7 @@ export const updateUserAvatar = async (image: File , c:Context ) => {
   const avatarUrl = `/uploads/avatars/${filename}`
 
   // Mettre à jour l'utilisateur dans la base de données 
-  const updatedUserAvatar = await updateAvatar(userId, avatarUrl)
+  const updatedUserAvatar = await updateUserAvatarById(userId, avatarUrl)
 
   return updatedUserAvatar.image
 
