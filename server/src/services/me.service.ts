@@ -33,8 +33,8 @@ export const updateUserAvatarService = async (image: File , c:Context ) => {
   const avatarUrl = `/uploads/avatars/${filename}`
 
   // Mettre à jour l'utilisateur dans la base de données 
-  const updatedUserAvatar = await updateUserAvatarById(userId, avatarUrl)
+  const updatedAvatar = await updateUserAvatarById(userId, avatarUrl)
 
-  return updatedUserAvatar.image
+  return updatedAvatar
 
 }
