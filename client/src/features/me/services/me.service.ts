@@ -13,7 +13,7 @@ export const updateUserAvatar = async (image: File) => {
   formData.append("image", image)
 
   return await authFetch<{ updatedImage: string }>("/me/avatar", {
-    method: "POST",
+    method: "PATCH",
     body: formData,
   })
 }
