@@ -18,14 +18,7 @@ export default function SignOutButton() {
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
   const handleSignOut = async () => {
-    logout(undefined, {
-      onSuccess: () => {
-        router.push("/login")
-      },
-      onError: (error) => {
-        console.error("Erreur lors de la déconnexion :", error)
-      },
-    })
+    logout(undefined, { onSuccess: () => { router.push("/login") } })
   }
 
   /**

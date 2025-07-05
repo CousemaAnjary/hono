@@ -17,10 +17,6 @@ export const useLogout = () => {
 
     // Gestion des erreurs et succès
     onError: (error) => { toast.error(error.message) },
-
-    onSuccess: (response) => {
-      toast.success(response.message)
-      queryClient.clear()
-    }
+    onSuccess: () => { queryClient.clear() }
   })
 }
