@@ -1,8 +1,17 @@
+import { authFetch } from "@/src/lib/authFetch"
 import { useMutation } from "@tanstack/react-query"
-import { updateUserAvatar } from "../services/me.service"
 
 export const useUpdateAvatar = () => {
   return useMutation({
-    mutationFn: updateUserAvatar,
+    //
+    mutationFn: async (image: File) => {
+      const formData = new FormData()
+      formData.append("image", image)
+
+      return await authFetch<{ updatedImage: string }>("/me/avatar", {
+        method: "PATCH",
+        body: formData,
+      })
+    },
   })
 }
