@@ -8,8 +8,8 @@ import { loginSchema } from "@/src/validators/auth.validator"
 
 export const useLogin = () => {
   return useMutation({
-    
-    //
+
+    // Envoie les données de connexion à l'API
     mutationFn: async (data: z.infer<typeof loginSchema>) => {
       return await authFetch<LoginResponse>("/auth/login", {
           method: "POST",
@@ -17,7 +17,7 @@ export const useLogin = () => {
         })
     },
 
-    //
+    // Gestion des erreurs et succès
     onError: (error) => { toast.error(error.message) },
     onSuccess: (response) => {toast.success(response.message)},
   })

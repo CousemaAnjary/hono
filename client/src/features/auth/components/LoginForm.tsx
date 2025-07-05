@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
-import { toast } from "sonner"
 import { z } from "zod"
 import { Button } from "../../../components/ui/button"
 import {
@@ -36,13 +35,7 @@ export default function LoginForm() {
   // ! ACTIONS (actions, fonctions) de l'application
 
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
-    login(data, {
-      onSuccess: (response) => {
-        toast.success(response.message)
-        router.push("/profile")
-      },
-      onError: (error) => { toast.error(error.message) },
-    })
+    login(data, { onSuccess: () => { router.push("/profile") } })
   }
 
   // ! AFFICHAGE (affichage, UI) de l'application
