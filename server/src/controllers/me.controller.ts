@@ -27,8 +27,8 @@ export const updateUserAvatarController = async (c: Context) => {
   if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
-    const updatedImage = await updateUserAvatarService(validated.data.image, c)
-    return c.json({ success: true, message: "Avatar mis à jour avec succès", updatedImage }, 200)
+    const updatedAvatar = await updateUserAvatarService(validated.data.image, c)
+    return c.json({ success: true, message: "Avatar mis à jour avec succès", updatedAvatar }, 200)
 
   } catch (error) {
     return c.json(jsonError(error), 500)
