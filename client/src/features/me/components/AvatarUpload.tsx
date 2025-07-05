@@ -18,6 +18,8 @@ export default function AvatarUpload() {
     accept: "image/*",
   })
 
+  
+
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null)
 
