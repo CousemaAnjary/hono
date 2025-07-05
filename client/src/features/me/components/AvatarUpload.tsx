@@ -35,7 +35,7 @@ export default function AvatarUpload() {
 
     uploadAvatar(file, {
       onSuccess: (response) => {
-        setFinalImageUrl(response.updatedAvatar.image)
+        setFinalImageUrl(`${process.env.NEXT_PUBLIC_STATIC_URL}${response.updatedAvatar.image}`)
         if (fileId) removeFile(fileId)
       },
     })
