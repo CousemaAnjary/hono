@@ -1,6 +1,6 @@
 import type { Context } from "hono"
 import { jsonError } from "utils/jsonError"
-import { loginUser, registerUser } from "../services/auth.service"
+import { loginService, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
 
@@ -19,14 +19,14 @@ export const register = async (c: Context) => {
   }
 }
 
-export const login = async (c: Context) => {
+export const loginController = async (c: Context) => {
   
   // validate des données d'entrée (body)
   const validated = loginSchema.safeParse(await c.req.json())
   if (!validated.success) return c.json({ success: false, message: validated.error.message }, 400)
 
   try {
-    const { accessToken } = await loginUser(validated.data)
+    const { accessToken } = await loginService(validated.data)
     setAccessTokenCookie(c, accessToken)
     // setRefreshTokenCookie(c, refreshToken)
     return c.json( { success: true, message: "Connexion réussie" }, 200 )

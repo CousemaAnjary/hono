@@ -1,10 +1,10 @@
 import { Hono } from "hono"
-import { login, logout, register } from "../controllers/auth.controller"
+import { loginController, logout, register } from "../controllers/auth.controller"
 
 
 const authRoutes = new Hono()
   .post('/register', register)
-  .post('/login', login)
+  .post('/login', loginController)
   .post('/logout', logout)
 
 
