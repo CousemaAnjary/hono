@@ -12,3 +12,6 @@ export const getCurrentUser = async (c: Context) => {
     return c.json(jsonError(error), 500)
   }
 }
+
+// Met à jour l'avatar de l'utilisateur connecté
+export const updateMyAvatar = async (c: Context) => {}
