@@ -1,10 +1,12 @@
 import { apiUrl } from "./api"
 
 export const authFetch = async <T = unknown>(url: string, options: RequestInit = {}): Promise<T> => {
+  const isFormData = options.body instanceof FormData
+
   const res = await fetch(`${apiUrl}${url}`, {
     credentials: "include",
     headers: {
-      "Content-Type": "application/json",
+       ...(isFormData ? {} : { "Content-Type": "application/json" }),
       ...options.headers,
     },
     ...options,

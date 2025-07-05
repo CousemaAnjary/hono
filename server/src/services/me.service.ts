@@ -23,7 +23,7 @@ export const updateUserAvatar = async (image: File , c:Context ) => {
   const filename = `${Date.now()}-avatar.${extension}`
 
   // 📂 Chemin de sauvegarde local
-  const localPath = `./uploads/avatars/${filename}`
+  const localPath = `src/uploads/avatars/${filename}`
 
   // 💾 Sauvegarde sur le disque (avec Bun)
   await writeFile(localPath, Buffer.from(buffer));

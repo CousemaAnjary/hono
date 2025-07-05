@@ -16,25 +16,26 @@ import {
 } from "@/src/components/ui/dialog"
 import { Area, getCroppedImg } from "@/src/utils/crop"
 import { useCallback, useEffect, useRef, useState } from "react"
-import { AvatarCropDialogProps } from "../types/avatar"
+
+type AvatarCropDialogProps = {
+  isOpen: boolean
+  setIsOpen: (open: boolean) => void
+  previewUrl: string | null
+  fileId: string | null
+  onCropConfirm: (blob: Blob) => void
+}
 
 export default function AvatarCropDialog({
   isOpen,
   setIsOpen,
   previewUrl,
   fileId,
-  setFinalImageUrl,
+  onCropConfirm,
 }: AvatarCropDialogProps) {
-  /**
-   * ! STATE (état, données) de l'application
-   */
   const [zoom, setZoom] = useState(1)
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null)
   const previousFileIdRef = useRef<string | undefined | null>(null)
 
-  /**
-   * ! COMPORTEMENT (méthodes, fonctions) de l'application
-   */
   useEffect(() => {
     if (fileId && fileId !== previousFileIdRef.current) {
       setIsOpen(true)
@@ -52,14 +53,11 @@ export default function AvatarCropDialog({
     if (!previewUrl || !croppedAreaPixels) return
     const blob = await getCroppedImg(previewUrl, croppedAreaPixels)
     if (!blob) return
-    const url = URL.createObjectURL(blob)
-    setFinalImageUrl(url)
+
+    onCropConfirm(blob)
     setIsOpen(false)
   }
 
-  /**
-   * ! AFFICHAGE (render) de l'application
-   */
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="gap-0 p-0 sm:max-w-140">
@@ -84,18 +82,10 @@ export default function AvatarCropDialog({
         )}
 
         <DialogFooter className="border-t bg-muted/30 px-4 py-3 flex justify-end gap-2">
-          <Button
-            variant="outline"
-            onClick={() => setIsOpen(false)}
-            className="font-spaceGrotesk"
-          >
+          <Button variant="outline" onClick={() => setIsOpen(false)}>
             Annuler
           </Button>
-          <Button
-            onClick={handleApply}
-            disabled={!previewUrl}
-            className="font-spaceGrotesk bg-pink-700 font-medium"
-          >
+          <Button onClick={handleApply} disabled={!previewUrl} className="bg-pink-700 text-white">
             Appliquer
           </Button>
         </DialogFooter>

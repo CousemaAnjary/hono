@@ -7,33 +7,42 @@ import { Pencil, XIcon } from "lucide-react"
 import AvatarCropDialog from "./AvatarCropDialog"
 import { Button } from "@/src/components/ui/button"
 import { useFileUpload } from "@/src/hooks/use-file-upload"
+import { useUpdateAvatar } from "../hooks/useUpdateAvatar"
 
 
 export default function AvatarUpload() {
-  /**
-   * ! STATE (état, données) de l'application
-   */
   const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
-      accept: "image/*",
-    })
+    accept: "image/*",
+  })
 
   const fileId = files[0]?.id
   const previewUrl = files[0]?.preview || null
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null)
-  /**
-   * ! COMPORTEMENT (méthodes, fonctions) de l'application
-   */
 
-  /**
-   * ! AFFICHAGE (render) de l'application
-   */
+  const { mutate: uploadAvatar, isPending } = useUpdateAvatar()
+
+  const handleApply = async (blob: Blob) => {
+  const file = new File([blob], "avatar.jpg", { type: blob.type })
+
+  uploadAvatar(file, {
+    onSuccess: (data) => {
+      setFinalImageUrl(data.updatedImage) // ou data.avatar si ton backend retourne "avatar"
+      if (fileId) removeFile(fileId)
+    },
+    onError: (err) => {
+      console.error("Erreur lors de l'upload de l'avatar :", err)
+    },
+  })
+}
+
   return (
     <div className="relative size-36">
       <Button
         variant="outline"
         className="group relative size-full rounded-xl border-2 border-white p-0 shadow-md overflow-hidden bg-transparent hover:bg-transparent"
         onClick={openFileDialog}
+        disabled={isPending}
       >
         <div className="absolute inset-0">
           <img
@@ -45,7 +54,6 @@ export default function AvatarUpload() {
           />
         </div>
 
-        {/* Icône d'édition */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
           <Pencil className="size-7 text-white drop-shadow-lg" />
         </div>
@@ -77,7 +85,7 @@ export default function AvatarUpload() {
         fileId={fileId}
         setIsOpen={setIsDialogOpen}
         previewUrl={previewUrl}
-        setFinalImageUrl={setFinalImageUrl}
+        onCropConfirm={handleApply}
       />
     </div>
   )
