@@ -1,5 +1,5 @@
 import { Context } from "hono"
-import { currentUser } from "services/user.service"
+import { currentUser } from "services/me.service"
 import { jsonError } from "utils/jsonError"
 
 // Récupère l'utilisateur connecté
