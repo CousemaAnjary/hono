@@ -11,6 +11,9 @@ import { useUpdateAvatar } from "../hooks/useUpdateAvatar"
 
 
 export default function AvatarUpload() {
+  /**
+   * ! STATE (état, données) de l'application
+   */
   const [{ files }, { removeFile, openFileDialog, getInputProps }] = useFileUpload({
     accept: "image/*",
   })
@@ -25,17 +28,21 @@ export default function AvatarUpload() {
   const handleApply = async (blob: Blob) => {
   const file = new File([blob], "avatar.jpg", { type: blob.type })
 
+  /**
+   * ! COMPORTEMENT (méthodes, fonctions) de l'application
+   */
   uploadAvatar(file, {
-    onSuccess: (data) => {
-      setFinalImageUrl(data.updatedImage) // ou data.avatar si ton backend retourne "avatar"
+    onSuccess: (response) => {
+      setFinalImageUrl(response.updatedAvatar.image)
       if (fileId) removeFile(fileId)
     },
-    onError: (err) => {
-      console.error("Erreur lors de l'upload de l'avatar :", err)
-    },
+  
   })
 }
 
+  /**
+   * ! AFFICHAGE (render) de l'application
+   */
   return (
     <div className="relative size-36">
       <Button
