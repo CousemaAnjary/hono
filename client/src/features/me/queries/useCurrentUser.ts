@@ -1,7 +1,7 @@
-
 import { authFetch } from "@/src/lib/authFetch"
 import { useQuery } from "@tanstack/react-query"
 import { GetCurrentUserResponse } from "../types/user"
+
 
 export const useCurrentUser = () => {
   return useQuery({
