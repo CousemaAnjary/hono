@@ -19,7 +19,6 @@ export const useLogin = () => {
 
     // Gestion des erreurs et succès
     onError: (error) => { toast.error(error.message) },
-    
     onSuccess: (response) => {toast.success(response.message)},
   })
 }
