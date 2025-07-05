@@ -18,27 +18,28 @@ export default function AvatarUpload() {
     accept: "image/*",
   })
 
-  const fileId = files[0]?.id
-  const previewUrl = files[0]?.preview || null
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [finalImageUrl, setFinalImageUrl] = useState<string | null>(null)
 
+  const fileId = files[0]?.id
+  const previewUrl = files[0]?.preview || null
+
   const { mutate: uploadAvatar, isPending } = useUpdateAvatar()
 
-  const handleApply = async (blob: Blob) => {
-  const file = new File([blob], "avatar.jpg", { type: blob.type })
 
   /**
    * ! COMPORTEMENT (méthodes, fonctions) de l'application
    */
-  uploadAvatar(file, {
-    onSuccess: (response) => {
-      setFinalImageUrl(response.updatedAvatar.image)
-      if (fileId) removeFile(fileId)
-    },
-  
-  })
-}
+   const handleApply = async (blob: Blob) => {
+    const file = new File([blob], "avatar.jpg", { type: blob.type })
+
+    uploadAvatar(file, {
+      onSuccess: (response) => {
+        setFinalImageUrl(response.updatedAvatar.image)
+        if (fileId) removeFile(fileId)
+      },
+    })
+  }
 
   /**
    * ! AFFICHAGE (render) de l'application
