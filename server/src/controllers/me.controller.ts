@@ -1,12 +1,12 @@
 import { Context } from "hono"
-import { currentUser, updateUserAvatar } from "services/me.service"
+import { getCurrentUserService, updateUserAvatar } from "services/me.service"
 import { jsonError } from "utils/jsonError"
 import { myAvatarSchema } from "validators/me.validator"
 
 // Récupère l'utilisateur connecté
-export const getCurrentUser = async (c: Context) => {
+export const getCurrentUserController = async (c: Context) => {
   try {
-    const userPayload = await currentUser(c)
+    const userPayload = await getCurrentUserService(c)
     return c.json({ success: true, message: "Utilisateur récupéré avec succès", userPayload }, 200)
 
   } catch (error) {
