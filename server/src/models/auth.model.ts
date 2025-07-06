@@ -11,6 +11,7 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),
 })
 
+
 // Type générés automatiquement par Drizzle
 export type User = InferSelectModel<typeof users> 
 export type InsertUser = InferInsertModel<typeof users>
