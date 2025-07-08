@@ -4,6 +4,7 @@ import { loginService, registerUser } from "../services/auth.service"
 import { loginSchema, registerSchema } from "../validators/auth.validator"
 import { deleteAccessTokenCookie, setAccessTokenCookie } from "utils/cookies/accessToken"
 
+
 export const register = async (c: Context) => {
   
   // validate des données d'entrée (body)
